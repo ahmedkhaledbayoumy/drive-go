@@ -1,0 +1,20 @@
+{
+  "@@locale": "ar",
+  "appName": "درايف جو",
+  "tagline": "سوق تأجير السيارات في مصر",
+  "signIn": "تسجيل الدخول",
+  "signUp": "إنشاء حساب",
+  "continueAsGuest": "متابعة كزائر",
+  "email": "البريد الإلكتروني",
+  "password": "كلمة المرور",
+  "forgotPassword": "نسيت كلمة المرور؟",
+  "search": "بحث",
+  "home": "الرئيسية",
+  "favorites": "المفضلة",
+  "myListings": "إعلاناتي",
+  "profile": "الملف الشخصي",
+  "settings": "الإعدادات",
+  "language": "اللغة",
+  "theme": "المظهر",
+  "logout": "تسجيل الخروج"
+}

@@ -1,0 +1,20 @@
+{
+  "@@locale": "en",
+  "appName": "Drive Go",
+  "tagline": "Car rental marketplace for Egypt",
+  "signIn": "Sign In",
+  "signUp": "Sign Up",
+  "continueAsGuest": "Continue as Guest",
+  "email": "Email",
+  "password": "Password",
+  "forgotPassword": "Forgot Password?",
+  "search": "Search",
+  "home": "Home",
+  "favorites": "Favorites",
+  "myListings": "My Listings",
+  "profile": "Profile",
+  "settings": "Settings",
+  "language": "Language",
+  "theme": "Theme",
+  "logout": "Logout"
+}
