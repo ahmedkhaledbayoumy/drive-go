@@ -1,8 +1,9 @@
 ﻿import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
+import '../../services/auth_provider.dart';
 
 /// Generic placeholder used for every screen that hasn't been built yet.
-/// Each vertical owner will replace these with real implementations.
 class PlaceholderScreen extends StatelessWidget {
   final String screenName;
   final String verticalOwner;
@@ -15,6 +16,8 @@ class PlaceholderScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final auth = context.watch<AuthProvider>();
+
     return Scaffold(
       appBar: AppBar(
         title: Text(screenName),
@@ -24,6 +27,15 @@ class PlaceholderScreen extends StatelessWidget {
                 onPressed: () => context.pop(),
               )
             : null,
+        actions: [
+          // Temporary logout button for development (until V1.5 Settings is built)
+          if (auth.isAuthenticated || auth.isGuest)
+            IconButton(
+              icon: const Icon(Icons.logout),
+              tooltip: 'Sign out',
+              onPressed: () => auth.signOut(),
+            ),
+        ],
       ),
       body: Center(
         child: Padding(
@@ -46,7 +58,10 @@ class PlaceholderScreen extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .primary
+                      .withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(

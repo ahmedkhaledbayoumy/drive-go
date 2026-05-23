@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../models/models.dart';
 import '../models/enums.dart';
+import '../models/models.dart';
 
 /// Three states the app can be in.
 enum AppAuthState { unauthenticated, guest, authenticated }
@@ -34,6 +34,7 @@ class AuthProvider extends ChangeNotifier {
   void _handleAuthChange(AuthState event) {
     if (event.session != null) {
       _state = AppAuthState.authenticated;
+      notifyListeners();
       _loadProfile();
     } else if (_state == AppAuthState.authenticated) {
       _state = AppAuthState.unauthenticated;
@@ -51,7 +52,7 @@ class AuthProvider extends ChangeNotifier {
       _currentProfile = Profile.fromJson(response);
       notifyListeners();
     } catch (_) {
-      // Profile doesn't exist yet — V1 creates it during signup.
+      // Profile doesn't exist yet — created during signup.
     }
   }
 
@@ -61,7 +62,9 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> signOut() async {
-    await _supabase.auth.signOut();
+    if (_state == AppAuthState.authenticated) {
+      await _supabase.auth.signOut();
+    }
     _state = AppAuthState.unauthenticated;
     _currentProfile = null;
     notifyListeners();
