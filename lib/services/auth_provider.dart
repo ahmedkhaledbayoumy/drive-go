@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/models.dart';
+import '../models/enums.dart';
 
 /// Three states the app can be in.
 enum AppAuthState { unauthenticated, guest, authenticated }
@@ -64,5 +65,51 @@ class AuthProvider extends ChangeNotifier {
     _state = AppAuthState.unauthenticated;
     _currentProfile = null;
     notifyListeners();
+  }
+
+  /// Sign in with email + password. Throws AuthException on failure.
+  Future<void> signInWithEmail({
+    required String email,
+    required String password,
+  }) async {
+    await _supabase.auth.signInWithPassword(
+      email: email,
+      password: password,
+    );
+  }
+
+  /// Sign up + create profile row in one flow.
+  Future<void> signUpWithEmail({
+    required String email,
+    required String password,
+    required String fullName,
+    required AccountType accountType,
+    String? phone,
+    String? businessName,
+    String? city,
+  }) async {
+    final res = await _supabase.auth.signUp(
+      email: email,
+      password: password,
+    );
+    if (res.user == null) {
+      throw const AuthException('Sign up failed');
+    }
+
+    await _supabase.from('profiles').insert({
+      'id': res.user!.id,
+      'email': email,
+      'full_name': fullName,
+      'phone': phone,
+      'account_type': accountType.name,
+      'business_name': businessName,
+      'city': city,
+      'verified': false,
+    });
+  }
+
+  /// Send password reset email.
+  Future<void> sendPasswordReset(String email) async {
+    await _supabase.auth.resetPasswordForEmail(email);
   }
 }

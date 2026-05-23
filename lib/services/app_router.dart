@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import '../features/shared/placeholder_screen.dart';
 import '../features/welcome/welcome_screen.dart';
 import 'auth_provider.dart';
+import '../features/auth/login_screen.dart';
 
 class AppRouter {
   static GoRouter create(AuthProvider auth) {
@@ -44,10 +45,7 @@ class AppRouter {
         GoRoute(path: '/welcome', builder: (_, __) => const WelcomeScreen()),
 
         // V1 — Authentication
-        GoRoute(
-            path: '/login',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Login', verticalOwner: 'V1 — Authentication')),
+        GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
         GoRoute(
             path: '/signup',
             builder: (_, __) => const PlaceholderScreen(
