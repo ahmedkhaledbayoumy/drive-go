@@ -1,4 +1,4 @@
-﻿// All enum types used across Drive Go models.
+// All enum types used across Drive Go models.
 // Stored in Postgres as text (the enum's `.name` value).
 
 enum AccountType { customer, individualOwner, dealership }
@@ -27,7 +27,7 @@ enum NotificationType {
   reviewPrompt,
 }
 
-// Helper: convert a stored string back to its enum value.
+/// Helper: convert a stored string back to its enum value.
 T enumFromString<T extends Enum>(List<T> values, String? value) {
   return values.firstWhere(
     (e) => e.name == value,
