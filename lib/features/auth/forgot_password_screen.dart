@@ -26,6 +26,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
 
   Future<void> _handleReset() async {
     if (!_formKey.currentState!.validate()) return;
+    final t = AppLocalizations.of(context)!;
     setState(() => _loading = true);
     try {
       await context.read<AuthProvider>().sendPasswordReset(
@@ -38,7 +39,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       _showError(e.message);
     } catch (_) {
       if (!mounted) return;
-      _showError('Something went wrong. Try again.');
+      _showError(t.somethingWrong);
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -76,20 +77,16 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const SizedBox(height: 24),
-          Text(
-            t.forgotPassword,
-            style: theme.textTheme.displaySmall?.copyWith(
-              fontWeight: FontWeight.w800,
-              color: theme.colorScheme.primary,
-            ),
-          ),
+          Text(t.forgotPassword,
+              style: theme.textTheme.displaySmall?.copyWith(
+                fontWeight: FontWeight.w800,
+                color: theme.colorScheme.primary,
+              )),
           const SizedBox(height: 8),
-          Text(
-            "Enter your email and we'll send you a link to reset your password.",
-            style: theme.textTheme.bodyLarge?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-            ),
-          ),
+          Text(t.forgotPasswordSubtitle,
+              style: theme.textTheme.bodyLarge?.copyWith(
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+              )),
           const SizedBox(height: 32),
           TextFormField(
             controller: _emailController,
@@ -102,10 +99,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               prefixIcon: const Icon(Icons.email_outlined),
             ),
             validator: (v) {
-              if (v == null || v.trim().isEmpty) {
-                return 'Email is required';
-              }
-              if (!v.contains('@')) return 'Invalid email';
+              if (v == null || v.trim().isEmpty) return t.emailRequired;
+              if (!v.contains('@')) return t.invalidEmail;
               return null;
             },
           ),
@@ -117,11 +112,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     height: 24,
                     width: 24,
                     child: CircularProgressIndicator(
-                      strokeWidth: 2,
-                      color: Colors.white,
-                    ),
-                  )
-                : const Text('Send Reset Link'),
+                        strokeWidth: 2, color: Colors.white))
+                : Text(t.sendResetLink),
           ),
         ],
       ),
@@ -134,24 +126,19 @@ class _SuccessView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 64),
       child: Column(
         children: [
-          Icon(
-            Icons.mark_email_read_outlined,
-            size: 80,
-            color: theme.colorScheme.primary,
-          ),
+          Icon(Icons.mark_email_read_outlined,
+              size: 80, color: theme.colorScheme.primary),
           const SizedBox(height: 24),
-          Text('Check your inbox', style: theme.textTheme.headlineSmall),
+          Text(t.checkInbox, style: theme.textTheme.headlineSmall),
           const SizedBox(height: 8),
-          Text(
-            'We sent you a link to reset your password.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodyMedium,
-          ),
+          Text(t.resetLinkSent,
+              textAlign: TextAlign.center, style: theme.textTheme.bodyMedium),
           const SizedBox(height: 32),
           OutlinedButton(
             onPressed: () => context.go('/login'),
@@ -161,7 +148,7 @@ class _SuccessView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: const Text('Back to Sign In'),
+            child: Text(t.backToSignIn),
           ),
         ],
       ),

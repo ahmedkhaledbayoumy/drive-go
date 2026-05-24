@@ -39,6 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Future<void> _handleSignUp() async {
     if (!_formKey.currentState!.validate()) return;
+    final t = AppLocalizations.of(context)!;
     setState(() => _loading = true);
     try {
       await context.read<AuthProvider>().signUpWithEmail(
@@ -61,7 +62,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       _showError(e.message);
     } catch (_) {
       if (!mounted) return;
-      _showError('Something went wrong. Try again.');
+      _showError(t.somethingWrong);
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -92,22 +93,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 16),
-                Text(
-                  t.signUp,
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: theme.colorScheme.primary,
-                  ),
-                ),
+                Text(t.signUp,
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: theme.colorScheme.primary,
+                    )),
                 const SizedBox(height: 8),
-                Text(
-                  'Join Drive Go',
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                ),
+                Text(t.joinDriveGo,
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                    )),
                 const SizedBox(height: 32),
-                Text('I am a:',
+                Text(t.iAmA,
                     style: theme.textTheme.titleSmall
                         ?.copyWith(fontWeight: FontWeight.w600)),
                 const SizedBox(height: 12),
@@ -121,15 +118,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   controller: _fullNameController,
                   textInputAction: TextInputAction.next,
                   enabled: !_loading,
-                  decoration: const InputDecoration(
-                    labelText: 'Full Name',
-                    prefixIcon: Icon(Icons.person_outline),
+                  decoration: InputDecoration(
+                    labelText: t.fullName,
+                    prefixIcon: const Icon(Icons.person_outline),
                   ),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) {
-                      return 'Full name is required';
-                    }
-                    if (v.trim().length < 3) return 'Name too short';
+                    if (v == null || v.trim().isEmpty)
+                      return t.fullNameRequired;
+                    if (v.trim().length < 3) return t.nameTooShort;
                     return null;
                   },
                 ),
@@ -144,10 +140,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     prefixIcon: const Icon(Icons.email_outlined),
                   ),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) {
-                      return 'Email is required';
-                    }
-                    if (!v.contains('@')) return 'Invalid email';
+                    if (v == null || v.trim().isEmpty) return t.emailRequired;
+                    if (!v.contains('@')) return t.invalidEmail;
                     return null;
                   },
                 ),
@@ -157,9 +151,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.next,
                   enabled: !_loading,
-                  decoration: const InputDecoration(
-                    labelText: 'Phone (optional)',
-                    prefixIcon: Icon(Icons.phone_outlined),
+                  decoration: InputDecoration(
+                    labelText: t.phoneOptional,
+                    prefixIcon: const Icon(Icons.phone_outlined),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -185,10 +179,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   validator: (v) {
-                    if (v == null || v.isEmpty) {
-                      return 'Password is required';
-                    }
-                    if (v.length < 6) return 'Min 6 characters';
+                    if (v == null || v.isEmpty) return t.passwordRequired;
+                    if (v.length < 6) return t.minPasswordLength;
                     return null;
                   },
                 ),
@@ -198,14 +190,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: _businessNameController,
                     textInputAction: TextInputAction.next,
                     enabled: !_loading,
-                    decoration: const InputDecoration(
-                      labelText: 'Business Name',
-                      prefixIcon: Icon(Icons.business_outlined),
+                    decoration: InputDecoration(
+                      labelText: t.businessName,
+                      prefixIcon: const Icon(Icons.business_outlined),
                     ),
                     validator: (v) {
-                      if (v == null || v.trim().isEmpty) {
-                        return 'Business name is required';
-                      }
+                      if (v == null || v.trim().isEmpty)
+                        return t.businessNameRequired;
                       return null;
                     },
                   ),
@@ -215,14 +206,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     textInputAction: TextInputAction.done,
                     enabled: !_loading,
                     onFieldSubmitted: (_) => _handleSignUp(),
-                    decoration: const InputDecoration(
-                      labelText: 'City',
-                      prefixIcon: Icon(Icons.location_city_outlined),
+                    decoration: InputDecoration(
+                      labelText: t.city,
+                      prefixIcon: const Icon(Icons.location_city_outlined),
                     ),
                     validator: (v) {
-                      if (v == null || v.trim().isEmpty) {
-                        return 'City is required';
-                      }
+                      if (v == null || v.trim().isEmpty) return t.cityRequired;
                       return null;
                     },
                   ),
@@ -235,17 +224,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           height: 24,
                           width: 24,
                           child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        )
+                              strokeWidth: 2, color: Colors.white))
                       : Text(t.signUp),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Already have an account? ',
+                    Text(t.haveAccountQuestion,
                         style: theme.textTheme.bodyMedium),
                     TextButton(
                       onPressed: _loading ? null : () => context.go('/login'),
@@ -270,7 +256,6 @@ class _AccountTypePicker extends StatelessWidget {
   final AccountType selected;
   final bool enabled;
   final ValueChanged<AccountType> onChanged;
-
   const _AccountTypePicker({
     required this.selected,
     required this.enabled,
@@ -279,12 +264,13 @@ class _AccountTypePicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     return Column(
       children: [
         _TypeCard(
           icon: Icons.person_outline,
-          title: 'Customer',
-          subtitle: 'Rent cars for personal use',
+          title: t.customer,
+          subtitle: t.customerSubtitle,
           selected: selected == AccountType.customer,
           enabled: enabled,
           onTap: () => onChanged(AccountType.customer),
@@ -292,8 +278,8 @@ class _AccountTypePicker extends StatelessWidget {
         const SizedBox(height: 8),
         _TypeCard(
           icon: Icons.car_rental_outlined,
-          title: 'Individual Owner',
-          subtitle: 'Rent out my personal car',
+          title: t.individualOwner,
+          subtitle: t.individualOwnerSubtitle,
           selected: selected == AccountType.individualOwner,
           enabled: enabled,
           onTap: () => onChanged(AccountType.individualOwner),
@@ -301,8 +287,8 @@ class _AccountTypePicker extends StatelessWidget {
         const SizedBox(height: 8),
         _TypeCard(
           icon: Icons.business_outlined,
-          title: 'Dealership',
-          subtitle: 'Rent out multiple cars (business)',
+          title: t.dealership,
+          subtitle: t.dealershipSubtitle,
           selected: selected == AccountType.dealership,
           enabled: enabled,
           onTap: () => onChanged(AccountType.dealership),
@@ -319,7 +305,6 @@ class _TypeCard extends StatelessWidget {
   final bool selected;
   final bool enabled;
   final VoidCallback onTap;
-
   const _TypeCard({
     required this.icon,
     required this.title,
@@ -351,31 +336,26 @@ class _TypeCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              icon,
-              size: 32,
-              color: selected
-                  ? theme.colorScheme.primary
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.6),
-            ),
+            Icon(icon,
+                size: 32,
+                color: selected
+                    ? theme.colorScheme.primary
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.6)),
             const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: selected ? theme.colorScheme.primary : null,
-                    ),
-                  ),
-                  Text(
-                    subtitle,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                    ),
-                  ),
+                  Text(title,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        color: selected ? theme.colorScheme.primary : null,
+                      )),
+                  Text(subtitle,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color:
+                            theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                      )),
                 ],
               ),
             ),

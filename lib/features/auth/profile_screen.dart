@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../l10n/app_localizations.dart';
 import '../../models/enums.dart';
 import '../../services/auth_provider.dart';
 
@@ -53,6 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) return;
+    final t = AppLocalizations.of(context)!;
     setState(() => _saving = true);
     try {
       await context.read<AuthProvider>().updateProfile(
@@ -63,14 +65,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Profile updated')),
+        SnackBar(content: Text(t.profileUpdated)),
       );
       setState(() => _editing = false);
     } catch (e) {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Failed to update: $e'),
+          content: Text(t.profileUpdateFailed),
           backgroundColor: Theme.of(context).colorScheme.error,
         ),
       );
@@ -79,19 +81,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  String _accountTypeLabel(AccountType type) {
+  String _accountTypeLabel(AccountType type, AppLocalizations t) {
     switch (type) {
       case AccountType.customer:
-        return 'Customer';
+        return t.customer;
       case AccountType.individualOwner:
-        return 'Individual Owner';
+        return t.individualOwner;
       case AccountType.dealership:
-        return 'Dealership';
+        return t.dealership;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final t = AppLocalizations.of(context)!;
     final auth = context.watch<AuthProvider>();
     final profile = auth.currentProfile;
     final theme = Theme.of(context);
@@ -106,12 +109,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile'),
+        title: Text(t.profile),
         actions: [
           if (!_editing)
             IconButton(
               icon: const Icon(Icons.edit_outlined),
-              tooltip: 'Edit profile',
+              tooltip: t.editProfile,
               onPressed: _enterEditMode,
             ),
         ],
@@ -124,7 +127,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Avatar
                 Center(
                   child: CircleAvatar(
                     radius: 50,
@@ -142,7 +144,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
                 const SizedBox(height: 16),
-                // Account type badge
                 Center(
                   child: Container(
                     padding:
@@ -154,90 +155,74 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Text(
-                          _accountTypeLabel(profile.accountType),
-                          style: theme.textTheme.bodyMedium?.copyWith(
-                            color: theme.colorScheme.primary,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
+                        Text(_accountTypeLabel(profile.accountType, t),
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              color: theme.colorScheme.primary,
+                              fontWeight: FontWeight.w600,
+                            )),
                         if (isDealership && profile.verified) ...[
                           const SizedBox(width: 6),
-                          Icon(
-                            Icons.verified,
-                            size: 16,
-                            color: theme.colorScheme.primary,
-                          ),
+                          Icon(Icons.verified,
+                              size: 16, color: theme.colorScheme.primary),
                         ],
                       ],
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
-
-                // Full Name
                 TextFormField(
                   controller: _fullNameController,
                   enabled: _editing && !_saving,
-                  decoration: const InputDecoration(
-                    labelText: 'Full Name',
-                    prefixIcon: Icon(Icons.person_outline),
+                  decoration: InputDecoration(
+                    labelText: t.fullName,
+                    prefixIcon: const Icon(Icons.person_outline),
                   ),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) {
-                      return 'Full name is required';
-                    }
+                    if (v == null || v.trim().isEmpty)
+                      return t.fullNameRequired;
                     return null;
                   },
                 ),
                 const SizedBox(height: 16),
-
-                // Email (always read-only)
                 TextFormField(
                   initialValue: profile.email,
                   enabled: false,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                  decoration: InputDecoration(
+                    labelText: t.email,
+                    prefixIcon: const Icon(Icons.email_outlined),
                   ),
                 ),
                 const SizedBox(height: 16),
-
-                // Phone
                 TextFormField(
                   controller: _phoneController,
                   enabled: _editing && !_saving,
                   keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(
-                    labelText: 'Phone',
-                    prefixIcon: Icon(Icons.phone_outlined),
+                  decoration: InputDecoration(
+                    labelText: t.phone,
+                    prefixIcon: const Icon(Icons.phone_outlined),
                   ),
                 ),
-
-                // Dealership-only fields
                 if (isDealership) ...[
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _businessNameController,
                     enabled: _editing && !_saving,
-                    decoration: const InputDecoration(
-                      labelText: 'Business Name',
-                      prefixIcon: Icon(Icons.business_outlined),
+                    decoration: InputDecoration(
+                      labelText: t.businessName,
+                      prefixIcon: const Icon(Icons.business_outlined),
                     ),
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
                     controller: _cityController,
                     enabled: _editing && !_saving,
-                    decoration: const InputDecoration(
-                      labelText: 'City',
-                      prefixIcon: Icon(Icons.location_city_outlined),
+                    decoration: InputDecoration(
+                      labelText: t.city,
+                      prefixIcon: const Icon(Icons.location_city_outlined),
                     ),
                   ),
                 ],
-
                 const SizedBox(height: 32),
-
                 if (_editing) ...[
                   ElevatedButton(
                     onPressed: _saving ? null : _save,
@@ -246,11 +231,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             height: 24,
                             width: 24,
                             child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              color: Colors.white,
-                            ),
-                          )
-                        : const Text('Save Changes'),
+                                strokeWidth: 2, color: Colors.white))
+                        : Text(t.saveChanges),
                   ),
                   const SizedBox(height: 12),
                   OutlinedButton(
@@ -261,7 +243,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: const Text('Cancel'),
+                    child: Text(t.cancel),
                   ),
                 ],
               ],

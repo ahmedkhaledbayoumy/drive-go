@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _handleLogin() async {
     if (!_formKey.currentState!.validate()) return;
+    final t = AppLocalizations.of(context)!;
     setState(() => _loading = true);
     try {
       await context.read<AuthProvider>().signInWithEmail(
@@ -39,7 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
       _showError(e.message);
     } catch (_) {
       if (!mounted) return;
-      _showError('Something went wrong. Try again.');
+      _showError(t.somethingWrong);
     } finally {
       if (mounted) setState(() => _loading = false);
     }
@@ -70,20 +71,16 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const SizedBox(height: 24),
-                Text(
-                  t.signIn,
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    color: theme.colorScheme.primary,
-                  ),
-                ),
+                Text(t.signIn,
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      color: theme.colorScheme.primary,
+                    )),
                 const SizedBox(height: 8),
-                Text(
-                  'Welcome back to Drive Go',
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                ),
+                Text(t.welcomeBack,
+                    style: theme.textTheme.bodyLarge?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                    )),
                 const SizedBox(height: 32),
                 TextFormField(
                   controller: _emailController,
@@ -95,10 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     prefixIcon: const Icon(Icons.email_outlined),
                   ),
                   validator: (v) {
-                    if (v == null || v.trim().isEmpty) {
-                      return 'Email is required';
-                    }
-                    if (!v.contains('@')) return 'Invalid email';
+                    if (v == null || v.trim().isEmpty) return t.emailRequired;
+                    if (!v.contains('@')) return t.invalidEmail;
                     return null;
                   },
                 ),
@@ -121,10 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   validator: (v) {
-                    if (v == null || v.isEmpty) {
-                      return 'Password is required';
-                    }
-                    if (v.length < 6) return 'Min 6 characters';
+                    if (v == null || v.isEmpty) return t.passwordRequired;
+                    if (v.length < 6) return t.minPasswordLength;
                     return null;
                   },
                 ),
@@ -146,17 +139,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 24,
                           width: 24,
                           child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            color: Colors.white,
-                          ),
-                        )
+                              strokeWidth: 2, color: Colors.white))
                       : Text(t.signIn),
                 ),
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Don't have an account? ",
+                    Text(t.noAccountQuestion,
                         style: theme.textTheme.bodyMedium),
                     TextButton(
                       onPressed: _loading ? null : () => context.go('/signup'),
