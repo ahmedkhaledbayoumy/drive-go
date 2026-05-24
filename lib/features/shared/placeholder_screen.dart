@@ -28,7 +28,12 @@ class PlaceholderScreen extends StatelessWidget {
               )
             : null,
         actions: [
-          // Temporary logout button for development (until V1.5 Settings is built)
+          if (auth.isAuthenticated)
+            IconButton(
+              icon: const Icon(Icons.person_outline),
+              tooltip: 'Profile',
+              onPressed: () => context.push('/profile'),
+            ),
           if (auth.isAuthenticated || auth.isGuest)
             IconButton(
               icon: const Icon(Icons.logout),

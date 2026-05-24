@@ -5,6 +5,7 @@ import 'auth_provider.dart';
 import '../features/auth/login_screen.dart';
 import '../features/auth/signup_screen.dart';
 import '../features/auth/forgot_password_screen.dart';
+import '../features/auth/profile_screen.dart';
 
 class AppRouter {
   static GoRouter create(AuthProvider auth) {
@@ -52,10 +53,7 @@ class AppRouter {
         GoRoute(
             path: '/forgot-password',
             builder: (_, __) => const ForgotPasswordScreen()),
-        GoRoute(
-            path: '/profile',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Profile', verticalOwner: 'V1 — Authentication')),
+        GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
         GoRoute(
             path: '/settings',
             builder: (_, __) => const PlaceholderScreen(

@@ -115,4 +115,31 @@ class AuthProvider extends ChangeNotifier {
   Future<void> sendPasswordReset(String email) async {
     await _supabase.auth.resetPasswordForEmail(email);
   }
+
+  /// Update the current user's profile fields and reload from DB.
+  Future<void> updateProfile({
+    String? fullName,
+    String? phone,
+    String? businessName,
+    String? city,
+    String? avatarUrl,
+  }) async {
+    if (_currentProfile == null) return;
+
+    final updates = <String, dynamic>{};
+    if (fullName != null) updates['full_name'] = fullName;
+    if (phone != null) updates['phone'] = phone;
+    if (businessName != null) updates['business_name'] = businessName;
+    if (city != null) updates['city'] = city;
+    if (avatarUrl != null) updates['avatar_url'] = avatarUrl;
+
+    if (updates.isEmpty) return;
+
+    await _supabase
+        .from('profiles')
+        .update(updates)
+        .eq('id', _currentProfile!.id);
+
+    await _loadProfile();
+  }
 }
