@@ -58,4 +58,104 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get logout => 'Logout';
+
+  @override
+  String get history => 'My Rentals';
+
+  @override
+  String get historyActive => 'Active';
+
+  @override
+  String get historyPast => 'Past';
+
+  @override
+  String get historyNoActive => 'No active rentals';
+
+  @override
+  String get historyNoActiveSub => 'Browse cars to book your next trip.';
+
+  @override
+  String get historyNoPast => 'No past rentals yet';
+
+  @override
+  String get historyNoPastSub => 'Your rental history will appear here.';
+
+  @override
+  String get historyError => 'Failed to load history';
+
+  @override
+  String get historyErrorSub => 'Something went wrong.';
+
+  @override
+  String get tryAgain => 'Try Again';
+
+  @override
+  String get notificationsTitle => 'Notifications';
+
+  @override
+  String get notificationsMarkAllRead => 'Mark all read';
+
+  @override
+  String get notificationsEmpty => 'All caught up!';
+
+  @override
+  String get notificationsEmptySub => 'You have no notifications yet.';
+
+  @override
+  String get reviewTitle => 'Leave a Review';
+
+  @override
+  String get reviewNotFound => 'Booking not found.';
+
+  @override
+  String get reviewRating => 'Your Rating';
+
+  @override
+  String get reviewReview => 'Your Review';
+
+  @override
+  String get reviewHint =>
+      'Tell others about your experience with this dealership...';
+
+  @override
+  String get reviewSubmit => 'Submit Review';
+
+  @override
+  String get ratingPoor => 'Poor';
+
+  @override
+  String get ratingBelowAverage => 'Below Average';
+
+  @override
+  String get ratingAverage => 'Average';
+
+  @override
+  String get ratingGood => 'Good';
+
+  @override
+  String get ratingExcellent => 'Excellent!';
+
+  @override
+  String get statusPending => 'Pending';
+
+  @override
+  String get statusConfirmed => 'Confirmed';
+
+  @override
+  String get statusActive => 'Active';
+
+  @override
+  String get statusCompleted => 'Completed';
+
+  @override
+  String get statusCancelled => 'Cancelled';
+
+  @override
+  String get statusDeclined => 'Declined';
+
+  @override
+  String get btnLeaveReview => 'Leave Review';
+
+  @override
+  String get btnRentAgain => 'Rent Again';
 }
