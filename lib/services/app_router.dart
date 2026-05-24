@@ -2,6 +2,11 @@ import 'package:go_router/go_router.dart';
 import '../features/shared/placeholder_screen.dart';
 import '../features/welcome/welcome_screen.dart';
 import 'auth_provider.dart';
+import '../features/auth/login_screen.dart';
+import '../features/auth/signup_screen.dart';
+import '../features/auth/forgot_password_screen.dart';
+import '../features/auth/profile_screen.dart';
+import '../features/auth/settings_screen.dart';
 
 class AppRouter {
   static GoRouter create(AuthProvider auth) {
@@ -44,27 +49,13 @@ class AppRouter {
         GoRoute(path: '/welcome', builder: (_, __) => const WelcomeScreen()),
 
         // V1 — Authentication
-        GoRoute(
-            path: '/login',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Login', verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/signup',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Sign Up', verticalOwner: 'V1 — Authentication')),
+        GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
+        GoRoute(path: '/signup', builder: (_, __) => const SignUpScreen()),
         GoRoute(
             path: '/forgot-password',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Forgot Password',
-                verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/profile',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Profile', verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/settings',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Settings', verticalOwner: 'V1 — Authentication')),
+            builder: (_, __) => const ForgotPasswordScreen()),
+        GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
+        GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),
 
         // V2 — Marketplace Discovery
         GoRoute(
