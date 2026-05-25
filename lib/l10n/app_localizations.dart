@@ -199,6 +199,354 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @findYourRide.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Your Perfect Ride'**
+  String get findYourRide;
+
+  /// No description provided for @homeTagline.
+  ///
+  /// In en, this message translates to:
+  /// **'Egypt\'s #1 Car Rental Marketplace · 200+ Cars'**
+  String get homeTagline;
+
+  /// No description provided for @searchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand, model, city…'**
+  String get searchHint;
+
+  /// No description provided for @searchDreamCar.
+  ///
+  /// In en, this message translates to:
+  /// **'Search your dream car…'**
+  String get searchDreamCar;
+
+  /// No description provided for @topBrands.
+  ///
+  /// In en, this message translates to:
+  /// **'Top Brands'**
+  String get topBrands;
+
+  /// No description provided for @exploreAllCars.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore All Cars'**
+  String get exploreAllCars;
+
+  /// No description provided for @viewAll.
+  ///
+  /// In en, this message translates to:
+  /// **'View All'**
+  String get viewAll;
+
+  /// No description provided for @viewAllArrow.
+  ///
+  /// In en, this message translates to:
+  /// **'View All →'**
+  String get viewAllArrow;
+
+  /// No description provided for @recommendForYou.
+  ///
+  /// In en, this message translates to:
+  /// **'Recommend For You'**
+  String get recommendForYou;
+
+  /// No description provided for @savedCollection.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved Collection'**
+  String get savedCollection;
+
+  /// No description provided for @bookNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Book Now'**
+  String get bookNow;
+
+  /// No description provided for @perDay.
+  ///
+  /// In en, this message translates to:
+  /// **'/Day'**
+  String get perDay;
+
+  /// No description provided for @filters.
+  ///
+  /// In en, this message translates to:
+  /// **'Filters'**
+  String get filters;
+
+  /// No description provided for @applyFilters.
+  ///
+  /// In en, this message translates to:
+  /// **'Apply Filters'**
+  String get applyFilters;
+
+  /// No description provided for @clearAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear All'**
+  String get clearAll;
+
+  /// No description provided for @availableOnly.
+  ///
+  /// In en, this message translates to:
+  /// **'Available only'**
+  String get availableOnly;
+
+  /// No description provided for @priceRange.
+  ///
+  /// In en, this message translates to:
+  /// **'Price Range'**
+  String get priceRange;
+
+  /// No description provided for @noResults.
+  ///
+  /// In en, this message translates to:
+  /// **'No cars found'**
+  String get noResults;
+
+  /// No description provided for @noSavedCars.
+  ///
+  /// In en, this message translates to:
+  /// **'No saved cars yet'**
+  String get noSavedCars;
+
+  /// No description provided for @browseCars.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse Cars'**
+  String get browseCars;
+
+  /// No description provided for @signInToSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to save your favourites'**
+  String get signInToSave;
+
+  /// No description provided for @color.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get color;
+
+  /// No description provided for @model.
+  ///
+  /// In en, this message translates to:
+  /// **'Model'**
+  String get model;
+
+  /// No description provided for @brand.
+  ///
+  /// In en, this message translates to:
+  /// **'Brand'**
+  String get brand;
+
+  /// No description provided for @city.
+  ///
+  /// In en, this message translates to:
+  /// **'City'**
+  String get city;
+
+  /// No description provided for @carClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Class'**
+  String get carClass;
+
+  /// No description provided for @transmission.
+  ///
+  /// In en, this message translates to:
+  /// **'Transmission'**
+  String get transmission;
+
+  /// No description provided for @fuel.
+  ///
+  /// In en, this message translates to:
+  /// **'Fuel'**
+  String get fuel;
+
+  /// No description provided for @anyBrand.
+  ///
+  /// In en, this message translates to:
+  /// **'Any brand'**
+  String get anyBrand;
+
+  /// No description provided for @anyCity.
+  ///
+  /// In en, this message translates to:
+  /// **'Any city'**
+  String get anyCity;
+
+  /// No description provided for @anyClass.
+  ///
+  /// In en, this message translates to:
+  /// **'Any class'**
+  String get anyClass;
+
+  /// No description provided for @manual.
+  ///
+  /// In en, this message translates to:
+  /// **'Manual'**
+  String get manual;
+
+  /// No description provided for @automatic.
+  ///
+  /// In en, this message translates to:
+  /// **'Automatic'**
+  String get automatic;
+
+  /// No description provided for @petrol.
+  ///
+  /// In en, this message translates to:
+  /// **'Petrol'**
+  String get petrol;
+
+  /// No description provided for @diesel.
+  ///
+  /// In en, this message translates to:
+  /// **'Diesel'**
+  String get diesel;
+
+  /// No description provided for @hybrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Hybrid'**
+  String get hybrid;
+
+  /// No description provided for @electric.
+  ///
+  /// In en, this message translates to:
+  /// **'Electric'**
+  String get electric;
+
+  /// No description provided for @available.
+  ///
+  /// In en, this message translates to:
+  /// **'Available'**
+  String get available;
+
+  /// No description provided for @all.
+  ///
+  /// In en, this message translates to:
+  /// **'All'**
+  String get all;
+
+  /// No description provided for @carsTab.
+  ///
+  /// In en, this message translates to:
+  /// **'Cars'**
+  String get carsTab;
+
+  /// No description provided for @saved.
+  ///
+  /// In en, this message translates to:
+  /// **'Saved'**
+  String get saved;
+
+  /// No description provided for @models.
+  ///
+  /// In en, this message translates to:
+  /// **'Models'**
+  String get models;
+
+  /// No description provided for @cities.
+  ///
+  /// In en, this message translates to:
+  /// **'Cities'**
+  String get cities;
+
+  /// No description provided for @priceChip.
+  ///
+  /// In en, this message translates to:
+  /// **'Price'**
+  String get priceChip;
+
+  /// No description provided for @addListing.
+  ///
+  /// In en, this message translates to:
+  /// **'Add'**
+  String get addListing;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
+
+  /// No description provided for @driveGo.
+  ///
+  /// In en, this message translates to:
+  /// **'DriveGo'**
+  String get driveGo;
+
+  /// No description provided for @egyptSuffix.
+  ///
+  /// In en, this message translates to:
+  /// **', Egypt'**
+  String get egyptSuffix;
+
+  /// No description provided for @colorWhite.
+  ///
+  /// In en, this message translates to:
+  /// **'White'**
+  String get colorWhite;
+
+  /// No description provided for @colorBlack.
+  ///
+  /// In en, this message translates to:
+  /// **'Black'**
+  String get colorBlack;
+
+  /// No description provided for @colorSilver.
+  ///
+  /// In en, this message translates to:
+  /// **'Silver'**
+  String get colorSilver;
+
+  /// No description provided for @colorBlue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get colorBlue;
+
+  /// No description provided for @colorRed.
+  ///
+  /// In en, this message translates to:
+  /// **'Red'**
+  String get colorRed;
+
+  /// No description provided for @colorGrey.
+  ///
+  /// In en, this message translates to:
+  /// **'Grey'**
+  String get colorGrey;
+
+  /// No description provided for @colorGold.
+  ///
+  /// In en, this message translates to:
+  /// **'Gold'**
+  String get colorGold;
+
+  /// No description provided for @priceRangeLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP {min}–{max}'**
+  String priceRangeLabel(int min, int max);
+
+  /// No description provided for @priceRangeSheetLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'EGP {min} — EGP {max}'**
+  String priceRangeSheetLabel(int min, int max);
+
+  /// No description provided for @carLocationLine.
+  ///
+  /// In en, this message translates to:
+  /// **'4.8 · {city}{egypt}'**
+  String carLocationLine(String city, String egypt);
 }
 
 class _AppLocalizationsDelegate

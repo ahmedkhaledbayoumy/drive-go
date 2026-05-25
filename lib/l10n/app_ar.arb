@@ -16,5 +16,81 @@
   "settings": "الإعدادات",
   "language": "اللغة",
   "theme": "المظهر",
-  "logout": "تسجيل الخروج"
+  "logout": "تسجيل الخروج",
+  "findYourRide": "اعثر على رحلتك المثالية",
+  "homeTagline": "سوق تأجير السيارات رقم ١ في مصر · أكثر من ٢٠٠ سيارة",
+  "searchHint": "الماركة، الموديل، المدينة…",
+  "searchDreamCar": "ابحث عن سيارة أحلامك…",
+  "topBrands": "أفضل الماركات",
+  "exploreAllCars": "استكشف كل السيارات",
+  "viewAll": "عرض الكل",
+  "viewAllArrow": "عرض الكل ←",
+  "recommendForYou": "موصى به لك",
+  "savedCollection": "المجموعة المحفوظة",
+  "bookNow": "احجز الآن",
+  "perDay": "/يوم",
+  "filters": "التصفية",
+  "applyFilters": "تطبيق التصفية",
+  "clearAll": "مسح الكل",
+  "availableOnly": "المتاح فقط",
+  "priceRange": "نطاق السعر",
+  "noResults": "لم يتم العثور على سيارات",
+  "noSavedCars": "لا توجد سيارات محفوظة بعد",
+  "browseCars": "تصفح السيارات",
+  "signInToSave": "سجّل الدخول لحفظ مفضلتك",
+  "color": "اللون",
+  "model": "الموديل",
+  "brand": "الماركة",
+  "city": "المدينة",
+  "carClass": "الفئة",
+  "transmission": "ناقل الحركة",
+  "fuel": "الوقود",
+  "anyBrand": "أي ماركة",
+  "anyCity": "أي مدينة",
+  "anyClass": "أي فئة",
+  "manual": "يدوي",
+  "automatic": "أوتوماتيك",
+  "petrol": "بنزين",
+  "diesel": "ديزل",
+  "hybrid": "هجين",
+  "electric": "كهربائي",
+  "available": "متاح",
+  "all": "الكل",
+  "carsTab": "السيارات",
+  "saved": "المحفوظة",
+  "models": "الموديلات",
+  "cities": "المدن",
+  "priceChip": "السعر",
+  "addListing": "إضافة",
+  "history": "السجل",
+  "driveGo": "درايف جو",
+  "egyptSuffix": "، مصر",
+  "colorWhite": "أبيض",
+  "colorBlack": "أسود",
+  "colorSilver": "فضي",
+  "colorBlue": "أزرق",
+  "colorRed": "أحمر",
+  "colorGrey": "رمادي",
+  "colorGold": "ذهبي",
+  "priceRangeLabel": "جنيه {min}–{max}",
+  "@priceRangeLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "priceRangeSheetLabel": "جنيه {min} — جنيه {max}",
+  "@priceRangeSheetLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "carLocationLine": "٤٫٨ · {city}{egypt}",
+  "@carLocationLine": {
+    "placeholders": {
+      "city": {"type": "String"},
+      "egypt": {"type": "String"}
+    }
+  }
 }

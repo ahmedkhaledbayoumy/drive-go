@@ -4,6 +4,7 @@ import 'l10n/app_localizations.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'features/discovery/providers/discovery_provider.dart';
 import 'services/app_router.dart';
 import 'services/auth_provider.dart';
 import 'services/language_provider.dart';
@@ -41,6 +42,11 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: themeProvider),
         ChangeNotifierProvider.value(value: languageProvider),
         ChangeNotifierProvider.value(value: authProvider),
+        ChangeNotifierProxyProvider<AuthProvider, DiscoveryProvider>(
+          create: (_) => DiscoveryProvider(userId: null),
+          update: (_, auth, __) =>
+              DiscoveryProvider(userId: auth.currentProfile?.id),
+        ),
       ],
       child: DriveGoApp(router: router),
     ),
