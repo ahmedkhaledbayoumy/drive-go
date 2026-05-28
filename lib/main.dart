@@ -8,6 +8,8 @@ import 'services/app_router.dart';
 import 'services/auth_provider.dart';
 import 'services/language_provider.dart';
 import 'services/supabase_config.dart';
+import 'features/history/providers/history_provider.dart';
+import 'features/history/providers/notification_provider.dart';
 import 'theme/app_theme.dart';
 import 'theme/theme_provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,6 +35,21 @@ Future<void> main() async {
   await languageProvider.loadFromPrefs();
 
   final authProvider = AuthProvider();
+  final historyProvider = HistoryProvider();
+  final notificationProvider = NotificationProvider();
+
+  String? lastUserId;
+  authProvider.addListener(() {
+    final profile = authProvider.currentProfile;
+    if (profile != null && profile.id != lastUserId) {
+      lastUserId = profile.id;
+      notificationProvider.init(profile.id);
+    } else if (profile == null && lastUserId != null) {
+      lastUserId = null;
+      notificationProvider.reset();
+    }
+  });
+
   final router = AppRouter.create(authProvider);
 
   runApp(
@@ -41,6 +58,8 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: themeProvider),
         ChangeNotifierProvider.value(value: languageProvider),
         ChangeNotifierProvider.value(value: authProvider),
+        ChangeNotifierProvider.value(value: historyProvider),
+        ChangeNotifierProvider.value(value: notificationProvider),
       ],
       child: DriveGoApp(router: router),
     ),

@@ -1,6 +1,9 @@
 import 'package:go_router/go_router.dart';
 import '../features/shared/placeholder_screen.dart';
 import '../features/welcome/welcome_screen.dart';
+import '../features/history/screens/history_screen.dart';
+import '../features/history/screens/notifications_screen.dart';
+import '../features/history/screens/review_screen.dart';
 import 'auth_provider.dart';
 
 class AppRouter {
@@ -120,19 +123,13 @@ class AppRouter {
         // V5 — History, Reviews, Notifications
         GoRoute(
             path: '/history',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Rental History',
-                verticalOwner: 'V5 — History & Notifications')),
+            builder: (_, __) => const HistoryScreen()),
         GoRoute(
             path: '/notifications',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Notifications',
-                verticalOwner: 'V5 — History & Notifications')),
+            builder: (_, __) => const NotificationsScreen()),
         GoRoute(
             path: '/review/:bookingId',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Leave Review',
-                verticalOwner: 'V5 — History & Notifications')),
+            builder: (_, state) => ReviewScreen(bookingId: state.pathParameters['bookingId']!)),
       ],
     );
   }

@@ -199,6 +199,204 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Logout'**
   String get logout;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'My Rentals'**
+  String get history;
+
+  /// No description provided for @historyActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get historyActive;
+
+  /// No description provided for @historyPast.
+  ///
+  /// In en, this message translates to:
+  /// **'Past'**
+  String get historyPast;
+
+  /// No description provided for @historyNoActive.
+  ///
+  /// In en, this message translates to:
+  /// **'No active rentals'**
+  String get historyNoActive;
+
+  /// No description provided for @historyNoActiveSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse cars to book your next trip.'**
+  String get historyNoActiveSub;
+
+  /// No description provided for @historyNoPast.
+  ///
+  /// In en, this message translates to:
+  /// **'No past rentals yet'**
+  String get historyNoPast;
+
+  /// No description provided for @historyNoPastSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Your rental history will appear here.'**
+  String get historyNoPastSub;
+
+  /// No description provided for @historyError.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load history'**
+  String get historyError;
+
+  /// No description provided for @historyErrorSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong.'**
+  String get historyErrorSub;
+
+  /// No description provided for @tryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get tryAgain;
+
+  /// No description provided for @notificationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notificationsTitle;
+
+  /// No description provided for @notificationsMarkAllRead.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark all read'**
+  String get notificationsMarkAllRead;
+
+  /// No description provided for @notificationsEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'All caught up!'**
+  String get notificationsEmpty;
+
+  /// No description provided for @notificationsEmptySub.
+  ///
+  /// In en, this message translates to:
+  /// **'You have no notifications yet.'**
+  String get notificationsEmptySub;
+
+  /// No description provided for @reviewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave a Review'**
+  String get reviewTitle;
+
+  /// No description provided for @reviewNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking not found.'**
+  String get reviewNotFound;
+
+  /// No description provided for @reviewRating.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Rating'**
+  String get reviewRating;
+
+  /// No description provided for @reviewReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Review'**
+  String get reviewReview;
+
+  /// No description provided for @reviewHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell others about your experience with this dealership...'**
+  String get reviewHint;
+
+  /// No description provided for @reviewSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Review'**
+  String get reviewSubmit;
+
+  /// No description provided for @ratingPoor.
+  ///
+  /// In en, this message translates to:
+  /// **'Poor'**
+  String get ratingPoor;
+
+  /// No description provided for @ratingBelowAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Below Average'**
+  String get ratingBelowAverage;
+
+  /// No description provided for @ratingAverage.
+  ///
+  /// In en, this message translates to:
+  /// **'Average'**
+  String get ratingAverage;
+
+  /// No description provided for @ratingGood.
+  ///
+  /// In en, this message translates to:
+  /// **'Good'**
+  String get ratingGood;
+
+  /// No description provided for @ratingExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get ratingExcellent;
+
+  /// No description provided for @statusPending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get statusPending;
+
+  /// No description provided for @statusConfirmed.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirmed'**
+  String get statusConfirmed;
+
+  /// No description provided for @statusActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Active'**
+  String get statusActive;
+
+  /// No description provided for @statusCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get statusCompleted;
+
+  /// No description provided for @statusCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancelled'**
+  String get statusCancelled;
+
+  /// No description provided for @statusDeclined.
+  ///
+  /// In en, this message translates to:
+  /// **'Declined'**
+  String get statusDeclined;
+
+  /// No description provided for @btnLeaveReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Review'**
+  String get btnLeaveReview;
+
+  /// No description provided for @btnRentAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Rent Again'**
+  String get btnRentAgain;
 }
 
 class _AppLocalizationsDelegate
