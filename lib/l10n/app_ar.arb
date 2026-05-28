@@ -3,6 +3,7 @@
 
   "appName": "درايف جو",
   "tagline": "سوق تأجير السيارات في مصر",
+  "driveGo": "درايف جو",
 
   "signIn": "تسجيل الدخول",
   "signUp": "إنشاء حساب",
@@ -70,6 +71,83 @@
   "home": "الرئيسية",
   "favorites": "المفضلة",
   "myListings": "إعلاناتي",
+
+  "findYourRide": "اعثر على رحلتك المثالية",
+  "homeTagline": "سوق تأجير السيارات رقم ١ في مصر · أكثر من ٢٠٠ سيارة",
+  "searchHint": "الماركة، الموديل، المدينة…",
+  "searchDreamCar": "ابحث عن سيارة أحلامك…",
+  "topBrands": "أفضل الماركات",
+  "exploreAllCars": "استكشف كل السيارات",
+  "viewAll": "عرض الكل",
+  "viewAllArrow": "عرض الكل ←",
+  "recommendForYou": "موصى به لك",
+  "savedCollection": "المجموعة المحفوظة",
+  "bookNow": "احجز الآن",
+  "perDay": "/يوم",
+  "available": "متاح",
+  "egyptSuffix": "، مصر",
+  "noResults": "لم يتم العثور على سيارات",
+  "noSavedCars": "لا توجد سيارات محفوظة بعد",
+  "browseCars": "تصفح السيارات",
+  "signInToSave": "سجّل الدخول لحفظ مفضلتك",
+
+  "filters": "التصفية",
+  "applyFilters": "تطبيق التصفية",
+  "clearAll": "مسح الكل",
+  "availableOnly": "المتاح فقط",
+  "priceRange": "نطاق السعر",
+  "color": "اللون",
+  "model": "الموديل",
+  "brand": "الماركة",
+  "carClass": "الفئة",
+  "transmission": "ناقل الحركة",
+  "fuel": "الوقود",
+  "anyBrand": "أي ماركة",
+  "anyCity": "أي مدينة",
+  "anyClass": "أي فئة",
+  "manual": "يدوي",
+  "automatic": "أوتوماتيك",
+  "petrol": "بنزين",
+  "diesel": "ديزل",
+  "hybrid": "هجين",
+  "electric": "كهربائي",
+  "all": "الكل",
+  "carsTab": "السيارات",
+  "saved": "المحفوظة",
+  "models": "الموديلات",
+  "cities": "المدن",
+  "priceChip": "السعر",
+  "addListing": "إضافة",
+
+  "colorWhite": "أبيض",
+  "colorBlack": "أسود",
+  "colorSilver": "فضي",
+  "colorBlue": "أزرق",
+  "colorRed": "أحمر",
+  "colorGrey": "رمادي",
+  "colorGold": "ذهبي",
+
+  "priceRangeLabel": "جنيه {min}–{max}",
+  "@priceRangeLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "priceRangeSheetLabel": "جنيه {min} — جنيه {max}",
+  "@priceRangeSheetLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "carLocationLine": "٤٫٨ · {city}{egypt}",
+  "@carLocationLine": {
+    "placeholders": {
+      "city": {"type": "String"},
+      "egypt": {"type": "String"}
+    }
+  },
 
   "history": "إيجاراتي",
   "historyActive": "نشط",

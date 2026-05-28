@@ -1,21 +1,24 @@
 ﻿import 'package:cached_network_image/cached_network_image.dart';
+import 'package:drive_go/l10n/app_localizations.dart';
+import 'package:drive_go/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:intl/intl.dart';
 import '../models/enums.dart';
 import '../models/models.dart';
 
-/// Drive Go's most-used widget. Displays one Car in a list/grid.
-/// Used by V2 (Home, Search, Favorites), V3 (My Listings, Owner Profile),
-/// and V5 (Rental History "rent again" section).
+/// Drive Go's most-used widget. Displays one [Car] in a list/grid.
 class CarCard extends StatelessWidget {
   final Car car;
+  final VoidCallback? onBookNow;
+  final VoidCallback? onTap;
   final bool isFavorite;
   final VoidCallback? onFavoriteToggle;
 
   const CarCard({
     super.key,
     required this.car,
+    this.onBookNow,
+    this.onTap,
     this.isFavorite = false,
     this.onFavoriteToggle,
   });
@@ -23,150 +26,233 @@ class CarCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final price = NumberFormat.currency(symbol: 'EGP ', decimalDigits: 0)
-        .format(car.pricePerDay);
+    final colorScheme = theme.colorScheme;
+    final t = AppLocalizations.of(context)!;
+    final title = '${car.brand} ${car.model} ${car.year}';
+    final shadowColor = theme.brightness == Brightness.dark
+        ? Colors.black26
+        : Colors.black12;
 
-    return Card(
+    return Container(
+      decoration: BoxDecoration(
+        color: colorScheme.surface,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: shadowColor,
+            blurRadius: 8,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
       clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => context.push('/car/${car.id}'),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Image + status badge + favorite button
-            Stack(
-              children: [
-                AspectRatio(
-                  aspectRatio: 16 / 10,
-                  child: car.photos.isEmpty
-                      ? Container(
-                          color: theme.colorScheme.surface,
-                          alignment: Alignment.center,
-                          child: Icon(
-                            Icons.directions_car,
-                            size: 60,
-                            color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
-                          ),
-                        )
-                      : CachedNetworkImage(
-                          imageUrl: car.photos.first,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          placeholder: (_, __) => Container(
-                            color: theme.colorScheme.surface,
-                            alignment: Alignment.center,
-                            child:
-                                const CircularProgressIndicator(strokeWidth: 2),
-                          ),
-                          errorWidget: (_, __, ___) => Container(
-                            color: theme.colorScheme.surface,
-                            alignment: Alignment.center,
-                            child: const Icon(Icons.broken_image),
+      child: Material(
+        color: colorScheme.surface,
+        child: InkWell(
+          onTap: onTap ?? () => context.push('/car/${car.id}'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              _CarImage(
+                car: car,
+                isFavorite: isFavorite,
+                onFavoriteToggle: onFavoriteToggle,
+                availableLabel: t.available,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700,
+                        color: colorScheme.onSurface,
+                      ),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          size: 14,
+                          color: colorScheme.secondary,
+                        ),
+                        const SizedBox(width: 4),
+                        Expanded(
+                          child: Text(
+                            t.carLocationLine(car.city, t.egyptSuffix),
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              fontSize: 12,
+                              color: colorScheme.onSurface.withValues(alpha: 0.6),
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
-                ),
-                Positioned(
-                  top: 12,
-                  right: 12,
-                  child: _StatusBadge(status: car.status),
-                ),
-                if (onFavoriteToggle != null)
-                  Positioned(
-                    top: 8,
-                    left: 8,
-                    child: Material(
-                      color: Colors.black.withValues(alpha: 0.4),
-                      shape: const CircleBorder(),
-                      child: IconButton(
-                        icon: Icon(
-                          isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: Colors.white,
+                      ],
+                    ),
+                    const SizedBox(height: 6),
+                    RichText(
+                      text: TextSpan(
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          fontSize: 11,
+                          color: colorScheme.onSurface.withValues(alpha: 0.6),
                         ),
-                        onPressed: onFavoriteToggle,
+                        children: [
+                          TextSpan(
+                            text: 'EGP ',
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: colorScheme.primary,
+                            ),
+                          ),
+                          TextSpan(
+                            text: car.pricePerDay.toStringAsFixed(0),
+                            style: theme.textTheme.bodyMedium?.copyWith(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700,
+                              color: colorScheme.primary,
+                            ),
+                          ),
+                          TextSpan(text: t.perDay),
+                        ],
                       ),
                     ),
-                  ),
-              ],
-            ),
-            // Details
-            Padding(
-              padding: const EdgeInsets.all(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    '${car.brand} ${car.model}',
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    '${car.year} Â· ${car.color}',
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on_outlined,
-                        size: 16,
-                        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                      ),
-                      const SizedBox(width: 4),
-                      Text(car.city, style: theme.textTheme.bodySmall),
-                      const Spacer(),
-                      Text(
-                        '$price/day',
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          color: theme.colorScheme.primary,
-                          fontWeight: FontWeight.w700,
+                    if (onBookNow != null) ...[
+                      const SizedBox(height: 10),
+                      SizedBox(
+                        width: double.infinity,
+                        height: 42,
+                        child: ElevatedButton(
+                          onPressed: onBookNow,
+                          style: ElevatedButton.styleFrom(
+                            elevation: 0,
+                            minimumSize: const Size.fromHeight(42),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            textStyle: theme.textTheme.labelLarge?.copyWith(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          child: Text(t.bookNow),
                         ),
                       ),
                     ],
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-/// Color-coded badge for the car listing status.
-class _StatusBadge extends StatelessWidget {
-  final CarStatus status;
+class _CarImage extends StatelessWidget {
+  final Car car;
+  final bool isFavorite;
+  final VoidCallback? onFavoriteToggle;
+  final String availableLabel;
 
-  const _StatusBadge({required this.status});
+  const _CarImage({
+    required this.car,
+    required this.isFavorite,
+    this.onFavoriteToggle,
+    required this.availableLabel,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final (color, label) = switch (status) {
-      CarStatus.available => (const Color(0xFF2E7D32), 'Available'),
-      CarStatus.pendingConfirmation => (const Color(0xFFED6C02), 'Pending'),
-      CarStatus.booked => (const Color(0xFFD32F2F), 'Booked'),
-    };
+    final colorScheme = Theme.of(context).colorScheme;
+    final placeholderColor = colorScheme.onSurface.withValues(alpha: 0.12);
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: color,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Text(
-        label,
-        // Note: V2 owner â€” localize via app_en.arb / app_ar.arb
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 12,
-          fontWeight: FontWeight.w600,
-        ),
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Stack(
+        fit: StackFit.expand,
+        children: [
+          if (car.photos.isEmpty)
+            ColoredBox(
+              color: placeholderColor,
+              child: Center(
+                child: Icon(
+                  Icons.directions_car,
+                  size: 48,
+                  color: colorScheme.onSurface.withValues(alpha: 0.4),
+                ),
+              ),
+            )
+          else
+            CachedNetworkImage(
+              imageUrl: car.photos.first,
+              fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
+              placeholder: (_, __) => ColoredBox(
+                color: placeholderColor,
+                child: const Center(
+                  child: CircularProgressIndicator(strokeWidth: 2),
+                ),
+              ),
+              errorWidget: (_, __, ___) => ColoredBox(
+                color: placeholderColor,
+                child: const Icon(Icons.broken_image),
+              ),
+            ),
+          if (car.status == CarStatus.available)
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: AppColors.statusAvailable,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  availableLabel,
+                  style: TextStyle(
+                    color: colorScheme.onError,
+                    fontSize: 11,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          if (onFavoriteToggle != null)
+            Positioned(
+              top: 4,
+              right: 4,
+              child: Material(
+                color: Colors.transparent,
+                child: IconButton(
+                  onPressed: onFavoriteToggle,
+                  icon: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 200),
+                    child: Icon(
+                      isFavorite ? Icons.favorite : Icons.favorite_border,
+                      key: ValueKey(isFavorite),
+                      color: isFavorite
+                          ? AppColors.statusBooked
+                          : colorScheme.onError,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ],
       ),
     );
   }

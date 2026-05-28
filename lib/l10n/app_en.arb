@@ -3,6 +3,7 @@
 
   "appName": "Drive Go",
   "tagline": "Car rental marketplace for Egypt",
+  "driveGo": "DriveGo",
 
   "signIn": "Sign In",
   "signUp": "Sign Up",
@@ -70,6 +71,83 @@
   "home": "Home",
   "favorites": "Favorites",
   "myListings": "My Listings",
+
+  "findYourRide": "Find Your Perfect Ride",
+  "homeTagline": "Egypt's #1 Car Rental Marketplace · 200+ Cars",
+  "searchHint": "Brand, model, city…",
+  "searchDreamCar": "Search your dream car…",
+  "topBrands": "Top Brands",
+  "exploreAllCars": "Explore All Cars",
+  "viewAll": "View All",
+  "viewAllArrow": "View All →",
+  "recommendForYou": "Recommend For You",
+  "savedCollection": "Saved Collection",
+  "bookNow": "Book Now",
+  "perDay": "/Day",
+  "available": "Available",
+  "egyptSuffix": ", Egypt",
+  "noResults": "No cars found",
+  "noSavedCars": "No saved cars yet",
+  "browseCars": "Browse Cars",
+  "signInToSave": "Sign in to save your favourites",
+
+  "filters": "Filters",
+  "applyFilters": "Apply Filters",
+  "clearAll": "Clear All",
+  "availableOnly": "Available only",
+  "priceRange": "Price Range",
+  "color": "Color",
+  "model": "Model",
+  "brand": "Brand",
+  "carClass": "Class",
+  "transmission": "Transmission",
+  "fuel": "Fuel",
+  "anyBrand": "Any brand",
+  "anyCity": "Any city",
+  "anyClass": "Any class",
+  "manual": "Manual",
+  "automatic": "Automatic",
+  "petrol": "Petrol",
+  "diesel": "Diesel",
+  "hybrid": "Hybrid",
+  "electric": "Electric",
+  "all": "All",
+  "carsTab": "Cars",
+  "saved": "Saved",
+  "models": "Models",
+  "cities": "Cities",
+  "priceChip": "Price",
+  "addListing": "Add",
+
+  "colorWhite": "White",
+  "colorBlack": "Black",
+  "colorSilver": "Silver",
+  "colorBlue": "Blue",
+  "colorRed": "Red",
+  "colorGrey": "Grey",
+  "colorGold": "Gold",
+
+  "priceRangeLabel": "EGP {min}–{max}",
+  "@priceRangeLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "priceRangeSheetLabel": "EGP {min} — EGP {max}",
+  "@priceRangeSheetLabel": {
+    "placeholders": {
+      "min": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "carLocationLine": "4.8 · {city}{egypt}",
+  "@carLocationLine": {
+    "placeholders": {
+      "city": {"type": "String"},
+      "egypt": {"type": "String"}
+    }
+  },
 
   "history": "My Rentals",
   "historyActive": "Active",

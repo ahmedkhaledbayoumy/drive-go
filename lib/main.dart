@@ -8,6 +8,7 @@ import 'services/app_router.dart';
 import 'services/auth_provider.dart';
 import 'services/language_provider.dart';
 import 'services/supabase_config.dart';
+import 'features/discovery/providers/discovery_provider.dart';
 import 'features/history/providers/history_provider.dart';
 import 'features/history/providers/notification_provider.dart';
 import 'theme/app_theme.dart';
@@ -22,22 +23,17 @@ Future<void> main() async {
     GoogleFonts.cairo(fontWeight: FontWeight.w700),
     GoogleFonts.cairo(fontWeight: FontWeight.w800),
   ]);
-
   await Supabase.initialize(
     url: SupabaseConfig.url,
     anonKey: SupabaseConfig.anonKey,
   );
-
   final themeProvider = ThemeProvider();
   await themeProvider.loadFromPrefs();
-
   final languageProvider = LanguageProvider();
   await languageProvider.loadFromPrefs();
-
   final authProvider = AuthProvider();
   final historyProvider = HistoryProvider();
   final notificationProvider = NotificationProvider();
-
   String? lastUserId;
   authProvider.addListener(() {
     final profile = authProvider.currentProfile;
@@ -49,9 +45,7 @@ Future<void> main() async {
       notificationProvider.reset();
     }
   });
-
   final router = AppRouter.create(authProvider);
-
   runApp(
     MultiProvider(
       providers: [
@@ -60,6 +54,15 @@ Future<void> main() async {
         ChangeNotifierProvider.value(value: authProvider),
         ChangeNotifierProvider.value(value: historyProvider),
         ChangeNotifierProvider.value(value: notificationProvider),
+        ChangeNotifierProxyProvider<AuthProvider, DiscoveryProvider>(
+          create: (_) =>
+              DiscoveryProvider(userId: authProvider.currentProfile?.id),
+          update: (_, auth, prev) {
+            final newUserId = auth.currentProfile?.id;
+            if (prev != null && prev.userId == newUserId) return prev;
+            return DiscoveryProvider(userId: newUserId);
+          },
+        ),
       ],
       child: DriveGoApp(router: router),
     ),
@@ -69,12 +72,10 @@ Future<void> main() async {
 class DriveGoApp extends StatelessWidget {
   final GoRouter router;
   const DriveGoApp({super.key, required this.router});
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
     final languageProvider = context.watch<LanguageProvider>();
-
     return MaterialApp.router(
       title: 'Drive Go',
       debugShowCheckedModeBanner: false,

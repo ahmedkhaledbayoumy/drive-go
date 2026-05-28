@@ -7,6 +7,11 @@ import '../features/auth/forgot_password_screen.dart';
 import '../features/auth/profile_screen.dart';
 import '../features/auth/settings_screen.dart';
 
+// V2 — Marketplace Discovery
+import '../features/discovery/home_screen.dart';
+import '../features/discovery/search_screen.dart';
+import '../features/discovery/favorites_screen.dart';
+
 // V3 — Listings
 import '../features/listings/car_details_screen.dart';
 import '../features/listings/edit_listing_screen.dart';
@@ -24,6 +29,7 @@ import '../features/shared/placeholder_screen.dart';
 import '../features/welcome/welcome_screen.dart';
 
 import 'auth_provider.dart';
+import '../features/discovery/models/filter_state.dart';
 
 class AppRouter {
   static GoRouter create(AuthProvider auth) {
@@ -73,22 +79,17 @@ class AppRouter {
         GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
         GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),
 
-        // V2 — Marketplace Discovery (placeholder for now, integrating next)
+        // V2 — Marketplace Discovery (real)
+        GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
         GoRoute(
-            path: '/home',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Home',
-                verticalOwner: 'V2 — Marketplace Discovery')),
+          path: '/search',
+          builder: (_, s) => SearchScreen(
+            initialFilters:
+                s.extra is FilterState ? s.extra as FilterState : null,
+          ),
+        ),
         GoRoute(
-            path: '/search',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Search',
-                verticalOwner: 'V2 — Marketplace Discovery')),
-        GoRoute(
-            path: '/favorites',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Favorites',
-                verticalOwner: 'V2 — Marketplace Discovery')),
+            path: '/favorites', builder: (_, __) => const FavoritesScreen()),
 
         // V3 — Listings (real)
         GoRoute(
