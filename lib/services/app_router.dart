@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 // V1 — Authentication
 import '../features/auth/login_screen.dart';
@@ -11,6 +12,7 @@ import '../features/auth/settings_screen.dart';
 import '../features/discovery/home_screen.dart';
 import '../features/discovery/search_screen.dart';
 import '../features/discovery/favorites_screen.dart';
+import '../features/discovery/models/filter_state.dart';
 
 // V3 — Listings
 import '../features/listings/car_details_screen.dart';
@@ -19,17 +21,23 @@ import '../features/listings/my_listings_screen.dart';
 import '../features/listings/owner_profile_screen.dart';
 import '../features/listings/rent_my_car_screen.dart';
 
+// V4 — Booking, Chat, Mock Payment
+import '../features/booking/providers/booking_provider.dart';
+import '../features/booking/screens/booking_details_screen.dart';
+import '../features/booking/screens/chat_screen.dart';
+import '../features/booking/screens/payment_screen.dart';
+import '../features/booking/screens/booking_confirmation_screen.dart';
+
 // V5 — History, Notifications, Reviews
 import '../features/history/screens/history_screen.dart';
 import '../features/history/screens/notifications_screen.dart';
 import '../features/history/screens/review_screen.dart';
 
 // Shared
-import '../features/shared/placeholder_screen.dart';
 import '../features/welcome/welcome_screen.dart';
 
+import '../models/models.dart';
 import 'auth_provider.dart';
-import '../features/discovery/models/filter_state.dart';
 
 class AppRouter {
   static GoRouter create(AuthProvider auth) {
@@ -70,7 +78,7 @@ class AppRouter {
         GoRoute(path: '/', redirect: (_, __) => '/welcome'),
         GoRoute(path: '/welcome', builder: (_, __) => const WelcomeScreen()),
 
-        // V1 — Authentication (real)
+        // V1 — Authentication
         GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
         GoRoute(path: '/signup', builder: (_, __) => const SignUpScreen()),
         GoRoute(
@@ -79,7 +87,7 @@ class AppRouter {
         GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
         GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),
 
-        // V2 — Marketplace Discovery (real)
+        // V2 — Marketplace Discovery
         GoRoute(path: '/home', builder: (_, __) => const HomeScreen()),
         GoRoute(
           path: '/search',
@@ -91,7 +99,7 @@ class AppRouter {
         GoRoute(
             path: '/favorites', builder: (_, __) => const FavoritesScreen()),
 
-        // V3 — Listings (real)
+        // V3 — Listings
         GoRoute(
             path: '/car/:id',
             builder: (_, s) =>
@@ -108,21 +116,60 @@ class AppRouter {
             builder: (_, s) =>
                 OwnerProfileScreen(ownerId: s.pathParameters['id']!)),
 
-        // V4 — Booking, Chat, Mock Payment (placeholders for now)
+        // V4 — Booking, Chat, Mock Payment
         GoRoute(
-            path: '/booking/:id',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Booking Details', verticalOwner: 'V4 — Booking')),
+          path: '/booking/new',
+          builder: (context, state) {
+            final car = state.extra as Car?;
+            return ChangeNotifierProvider(
+              create: (_) => BookingProvider(),
+              child: BookingDetailsScreen(car: car),
+            );
+          },
+        ),
         GoRoute(
-            path: '/chat/:bookingId',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Chat', verticalOwner: 'V4 — Booking')),
+          path: '/booking/:id',
+          builder: (context, state) {
+            final id = state.pathParameters['id']!;
+            final car = state.extra as Car?;
+            return ChangeNotifierProvider(
+              create: (_) => BookingProvider(),
+              child: BookingDetailsScreen(bookingId: id, car: car),
+            );
+          },
+        ),
         GoRoute(
-            path: '/payment/:bookingId',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Mock Payment', verticalOwner: 'V4 — Booking')),
+          path: '/booking-confirmation/:bookingId',
+          builder: (context, state) {
+            final bookingId = state.pathParameters['bookingId']!;
+            return ChangeNotifierProvider(
+              create: (_) => BookingProvider(),
+              child: BookingConfirmationScreen(bookingId: bookingId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/chat/:bookingId',
+          builder: (context, state) {
+            final bookingId = state.pathParameters['bookingId']!;
+            return ChangeNotifierProvider(
+              create: (_) => BookingProvider(),
+              child: ChatScreen(bookingId: bookingId),
+            );
+          },
+        ),
+        GoRoute(
+          path: '/payment/:bookingId',
+          builder: (context, state) {
+            final bookingId = state.pathParameters['bookingId']!;
+            return ChangeNotifierProvider(
+              create: (_) => BookingProvider(),
+              child: PaymentScreen(bookingId: bookingId),
+            );
+          },
+        ),
 
-        // V5 — History, Notifications, Reviews (real)
+        // V5 — History, Notifications, Reviews
         GoRoute(path: '/history', builder: (_, __) => const HistoryScreen()),
         GoRoute(
             path: '/notifications',

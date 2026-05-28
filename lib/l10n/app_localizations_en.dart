@@ -462,4 +462,247 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get btnRentAgain => 'Rent Again';
+
+  @override
+  String get bookingDetails => 'Booking Details';
+
+  @override
+  String get bookWithDriver => 'Book with driver';
+
+  @override
+  String get driverCostPerDay => '+200 EGP/day';
+
+  @override
+  String get rentalPeriod => 'Rental Period';
+
+  @override
+  String get pickupDate => 'Pickup date';
+
+  @override
+  String get returnDate => 'Return date';
+
+  @override
+  String get selectDate => 'Select';
+
+  @override
+  String daysRental(int count) {
+    return '$count day rental';
+  }
+
+  @override
+  String daysRentalPlural(int count) {
+    return '$count days rental';
+  }
+
+  @override
+  String get pickupLocation => 'Pickup location';
+
+  @override
+  String get pickupHint => 'e.g. Cairo Airport';
+
+  @override
+  String get rentalCost => 'Rental Cost';
+
+  @override
+  String get totalAmount => 'Total amount';
+
+  @override
+  String get driver => 'Driver';
+
+  @override
+  String get days => 'days';
+
+  @override
+  String payAmount(String amount) {
+    return 'Pay EGP $amount';
+  }
+
+  @override
+  String get creatingBooking => 'Creating booking…';
+
+  @override
+  String get failedCreateBooking => 'Failed to create booking.';
+
+  @override
+  String get bookingNotFound => 'Booking not found.';
+
+  @override
+  String get bookingId => 'Booking ID';
+
+  @override
+  String get from => 'From';
+
+  @override
+  String get to => 'To';
+
+  @override
+  String get duration => 'Duration';
+
+  @override
+  String get withDriver => 'With driver';
+
+  @override
+  String get pickup => 'Pickup';
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get payment => 'Payment';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get decline => 'Decline';
+
+  @override
+  String get markCompleted => 'Mark as Completed';
+
+  @override
+  String get phoneConfirmation => 'Phone Confirmation';
+
+  @override
+  String get didOwnerMarkCar => 'Did the owner mark the car ready for you?';
+
+  @override
+  String get enjoyRide => 'Great! Enjoy your ride 🚗';
+
+  @override
+  String get supportFollowUp => 'Support will follow up with the owner.';
+
+  @override
+  String get chat => 'Chat';
+
+  @override
+  String get contactVia => 'Contact via:';
+
+  @override
+  String get inApp => 'In-App';
+
+  @override
+  String get whatsapp => 'WhatsApp';
+
+  @override
+  String get call => 'Call';
+
+  @override
+  String get noMessages => 'No messages yet.';
+
+  @override
+  String get startConversation => 'Start the conversation below.';
+
+  @override
+  String get typeMessage => 'Type a message…';
+
+  @override
+  String get ownerNoPhone => 'Owner has not added a phone number yet.';
+
+  @override
+  String get whatsappNotInstalled =>
+      'WhatsApp is not installed on this device.';
+
+  @override
+  String get cannotCall => 'Cannot make calls on this device.';
+
+  @override
+  String get paymentDetails => 'Payment details';
+
+  @override
+  String get amountDue => 'Amount due';
+
+  @override
+  String get secure => 'Secure';
+
+  @override
+  String get cardNumber => 'Card Number';
+
+  @override
+  String get cardNumberHint => '0000 0000 0000 0000';
+
+  @override
+  String get cardholderName => 'Cardholder Name';
+
+  @override
+  String get cardholderHint => 'Ahmed Khaled';
+
+  @override
+  String get expiry => 'Expiry';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get bookingInformation => 'Booking Information';
+
+  @override
+  String get carRental => 'Car rental';
+
+  @override
+  String get mockPaymentNote => 'Mock payment — no real transaction occurs.';
+
+  @override
+  String confirmPayAmount(String amount) {
+    return 'Confirm  •  EGP $amount';
+  }
+
+  @override
+  String get confirmPayment => 'Confirm Payment';
+
+  @override
+  String get processingPayment => 'Processing Payment…';
+
+  @override
+  String get doNotClose => 'Please do not close this screen.';
+
+  @override
+  String get paymentStatus => 'Payment Status';
+
+  @override
+  String get paymentSuccessful => 'Payment successful';
+
+  @override
+  String get bookingConfirmedSub => 'Your car booking is now confirmed';
+
+  @override
+  String get viewBookingDetails => 'View Booking Details';
+
+  @override
+  String get backToHome => 'Back to Home';
+
+  @override
+  String get paidStatus => 'Paid ✓';
+
+  @override
+  String get bookingConfirmedTitle => 'Booking Confirmed';
+
+  @override
+  String get bookingRequestSent => 'Booking Request Sent!';
+
+  @override
+  String get ownerWillConfirm => 'The owner will confirm shortly.';
+
+  @override
+  String get chatWithOwner => 'Chat with Owner';
+
+  @override
+  String get viewFullDetails => 'View Full Details';
+
+  @override
+  String get pending => 'Pending';
+
+  @override
+  String get enter16Digits => 'Enter 16 digits';
+
+  @override
+  String get enterName => 'Enter name';
+
+  @override
+  String get required => 'Required';
 }

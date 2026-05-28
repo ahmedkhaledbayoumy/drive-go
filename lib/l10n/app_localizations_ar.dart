@@ -462,4 +462,246 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get btnRentAgain => 'استأجر مرة أخرى';
+
+  @override
+  String get bookingDetails => 'تفاصيل الحجز';
+
+  @override
+  String get bookWithDriver => 'حجز مع سائق';
+
+  @override
+  String get driverCostPerDay => '+200 جنيه/يوم';
+
+  @override
+  String get rentalPeriod => 'فترة الإيجار';
+
+  @override
+  String get pickupDate => 'تاريخ الاستلام';
+
+  @override
+  String get returnDate => 'تاريخ الإرجاع';
+
+  @override
+  String get selectDate => 'اختر';
+
+  @override
+  String daysRental(int count) {
+    return 'إيجار ليوم $count';
+  }
+
+  @override
+  String daysRentalPlural(int count) {
+    return 'إيجار $count أيام';
+  }
+
+  @override
+  String get pickupLocation => 'موقع الاستلام';
+
+  @override
+  String get pickupHint => 'مثال: مطار القاهرة';
+
+  @override
+  String get rentalCost => 'تكلفة الإيجار';
+
+  @override
+  String get totalAmount => 'المبلغ الإجمالي';
+
+  @override
+  String get driver => 'سائق';
+
+  @override
+  String get days => 'أيام';
+
+  @override
+  String payAmount(String amount) {
+    return 'ادفع $amount جنيه';
+  }
+
+  @override
+  String get creatingBooking => 'جاري إنشاء الحجز…';
+
+  @override
+  String get failedCreateBooking => 'فشل إنشاء الحجز.';
+
+  @override
+  String get bookingNotFound => 'الحجز غير موجود.';
+
+  @override
+  String get bookingId => 'رقم الحجز';
+
+  @override
+  String get from => 'من';
+
+  @override
+  String get to => 'إلى';
+
+  @override
+  String get duration => 'المدة';
+
+  @override
+  String get withDriver => 'مع سائق';
+
+  @override
+  String get pickup => 'الاستلام';
+
+  @override
+  String get total => 'الإجمالي';
+
+  @override
+  String get payment => 'الدفع';
+
+  @override
+  String get yes => 'نعم';
+
+  @override
+  String get no => 'لا';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get decline => 'رفض';
+
+  @override
+  String get markCompleted => 'تحديد كمكتمل';
+
+  @override
+  String get phoneConfirmation => 'تأكيد هاتفي';
+
+  @override
+  String get didOwnerMarkCar => 'هل قام المالك بتجهيز السيارة لك؟';
+
+  @override
+  String get enjoyRide => 'رائع! استمتع برحلتك 🚗';
+
+  @override
+  String get supportFollowUp => 'سيتابع الدعم مع المالك.';
+
+  @override
+  String get chat => 'المحادثة';
+
+  @override
+  String get contactVia => 'تواصل عبر:';
+
+  @override
+  String get inApp => 'التطبيق';
+
+  @override
+  String get whatsapp => 'واتساب';
+
+  @override
+  String get call => 'اتصال';
+
+  @override
+  String get noMessages => 'لا توجد رسائل بعد.';
+
+  @override
+  String get startConversation => 'ابدأ المحادثة أدناه.';
+
+  @override
+  String get typeMessage => 'اكتب رسالة…';
+
+  @override
+  String get ownerNoPhone => 'لم يضف المالك رقم هاتف بعد.';
+
+  @override
+  String get whatsappNotInstalled => 'واتساب غير مثبت على هذا الجهاز.';
+
+  @override
+  String get cannotCall => 'لا يمكن إجراء مكالمات على هذا الجهاز.';
+
+  @override
+  String get paymentDetails => 'تفاصيل الدفع';
+
+  @override
+  String get amountDue => 'المبلغ المستحق';
+
+  @override
+  String get secure => 'آمن';
+
+  @override
+  String get cardNumber => 'رقم البطاقة';
+
+  @override
+  String get cardNumberHint => '0000 0000 0000 0000';
+
+  @override
+  String get cardholderName => 'اسم حامل البطاقة';
+
+  @override
+  String get cardholderHint => 'أحمد خالد';
+
+  @override
+  String get expiry => 'تاريخ الانتهاء';
+
+  @override
+  String get cvv => 'CVV';
+
+  @override
+  String get bookingInformation => 'معلومات الحجز';
+
+  @override
+  String get carRental => 'إيجار السيارة';
+
+  @override
+  String get mockPaymentNote => 'دفع تجريبي — لا تتم معاملة حقيقية.';
+
+  @override
+  String confirmPayAmount(String amount) {
+    return 'تأكيد  •  $amount جنيه';
+  }
+
+  @override
+  String get confirmPayment => 'تأكيد الدفع';
+
+  @override
+  String get processingPayment => 'جاري معالجة الدفع…';
+
+  @override
+  String get doNotClose => 'يرجى عدم إغلاق هذه الشاشة.';
+
+  @override
+  String get paymentStatus => 'حالة الدفع';
+
+  @override
+  String get paymentSuccessful => 'تم الدفع بنجاح';
+
+  @override
+  String get bookingConfirmedSub => 'تم تأكيد حجز سيارتك';
+
+  @override
+  String get viewBookingDetails => 'عرض تفاصيل الحجز';
+
+  @override
+  String get backToHome => 'العودة للرئيسية';
+
+  @override
+  String get paidStatus => 'مدفوع ✓';
+
+  @override
+  String get bookingConfirmedTitle => 'تم تأكيد الحجز';
+
+  @override
+  String get bookingRequestSent => 'تم إرسال طلب الحجز!';
+
+  @override
+  String get ownerWillConfirm => 'سيقوم المالك بالتأكيد قريباً.';
+
+  @override
+  String get chatWithOwner => 'المحادثة مع المالك';
+
+  @override
+  String get viewFullDetails => 'عرض التفاصيل الكاملة';
+
+  @override
+  String get pending => 'قيد الانتظار';
+
+  @override
+  String get enter16Digits => 'أدخل 16 رقماً';
+
+  @override
+  String get enterName => 'أدخل الاسم';
+
+  @override
+  String get required => 'مطلوب';
 }

@@ -991,6 +991,474 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Rent Again'**
   String get btnRentAgain;
+
+  /// No description provided for @bookingDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Details'**
+  String get bookingDetails;
+
+  /// No description provided for @bookWithDriver.
+  ///
+  /// In en, this message translates to:
+  /// **'Book with driver'**
+  String get bookWithDriver;
+
+  /// No description provided for @driverCostPerDay.
+  ///
+  /// In en, this message translates to:
+  /// **'+200 EGP/day'**
+  String get driverCostPerDay;
+
+  /// No description provided for @rentalPeriod.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental Period'**
+  String get rentalPeriod;
+
+  /// No description provided for @pickupDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup date'**
+  String get pickupDate;
+
+  /// No description provided for @returnDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Return date'**
+  String get returnDate;
+
+  /// No description provided for @selectDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Select'**
+  String get selectDate;
+
+  /// No description provided for @daysRental.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} day rental'**
+  String daysRental(int count);
+
+  /// No description provided for @daysRentalPlural.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days rental'**
+  String daysRentalPlural(int count);
+
+  /// No description provided for @pickupLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup location'**
+  String get pickupLocation;
+
+  /// No description provided for @pickupHint.
+  ///
+  /// In en, this message translates to:
+  /// **'e.g. Cairo Airport'**
+  String get pickupHint;
+
+  /// No description provided for @rentalCost.
+  ///
+  /// In en, this message translates to:
+  /// **'Rental Cost'**
+  String get rentalCost;
+
+  /// No description provided for @totalAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Total amount'**
+  String get totalAmount;
+
+  /// No description provided for @driver.
+  ///
+  /// In en, this message translates to:
+  /// **'Driver'**
+  String get driver;
+
+  /// No description provided for @days.
+  ///
+  /// In en, this message translates to:
+  /// **'days'**
+  String get days;
+
+  /// No description provided for @payAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay EGP {amount}'**
+  String payAmount(String amount);
+
+  /// No description provided for @creatingBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Creating booking…'**
+  String get creatingBooking;
+
+  /// No description provided for @failedCreateBooking.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to create booking.'**
+  String get failedCreateBooking;
+
+  /// No description provided for @bookingNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking not found.'**
+  String get bookingNotFound;
+
+  /// No description provided for @bookingId.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking ID'**
+  String get bookingId;
+
+  /// No description provided for @from.
+  ///
+  /// In en, this message translates to:
+  /// **'From'**
+  String get from;
+
+  /// No description provided for @to.
+  ///
+  /// In en, this message translates to:
+  /// **'To'**
+  String get to;
+
+  /// No description provided for @duration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration'**
+  String get duration;
+
+  /// No description provided for @withDriver.
+  ///
+  /// In en, this message translates to:
+  /// **'With driver'**
+  String get withDriver;
+
+  /// No description provided for @pickup.
+  ///
+  /// In en, this message translates to:
+  /// **'Pickup'**
+  String get pickup;
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @payment.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment'**
+  String get payment;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @decline.
+  ///
+  /// In en, this message translates to:
+  /// **'Decline'**
+  String get decline;
+
+  /// No description provided for @markCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Mark as Completed'**
+  String get markCompleted;
+
+  /// No description provided for @phoneConfirmation.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone Confirmation'**
+  String get phoneConfirmation;
+
+  /// No description provided for @didOwnerMarkCar.
+  ///
+  /// In en, this message translates to:
+  /// **'Did the owner mark the car ready for you?'**
+  String get didOwnerMarkCar;
+
+  /// No description provided for @enjoyRide.
+  ///
+  /// In en, this message translates to:
+  /// **'Great! Enjoy your ride 🚗'**
+  String get enjoyRide;
+
+  /// No description provided for @supportFollowUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Support will follow up with the owner.'**
+  String get supportFollowUp;
+
+  /// No description provided for @chat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get chat;
+
+  /// No description provided for @contactVia.
+  ///
+  /// In en, this message translates to:
+  /// **'Contact via:'**
+  String get contactVia;
+
+  /// No description provided for @inApp.
+  ///
+  /// In en, this message translates to:
+  /// **'In-App'**
+  String get inApp;
+
+  /// No description provided for @whatsapp.
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp'**
+  String get whatsapp;
+
+  /// No description provided for @call.
+  ///
+  /// In en, this message translates to:
+  /// **'Call'**
+  String get call;
+
+  /// No description provided for @noMessages.
+  ///
+  /// In en, this message translates to:
+  /// **'No messages yet.'**
+  String get noMessages;
+
+  /// No description provided for @startConversation.
+  ///
+  /// In en, this message translates to:
+  /// **'Start the conversation below.'**
+  String get startConversation;
+
+  /// No description provided for @typeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a message…'**
+  String get typeMessage;
+
+  /// No description provided for @ownerNoPhone.
+  ///
+  /// In en, this message translates to:
+  /// **'Owner has not added a phone number yet.'**
+  String get ownerNoPhone;
+
+  /// No description provided for @whatsappNotInstalled.
+  ///
+  /// In en, this message translates to:
+  /// **'WhatsApp is not installed on this device.'**
+  String get whatsappNotInstalled;
+
+  /// No description provided for @cannotCall.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot make calls on this device.'**
+  String get cannotCall;
+
+  /// No description provided for @paymentDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment details'**
+  String get paymentDetails;
+
+  /// No description provided for @amountDue.
+  ///
+  /// In en, this message translates to:
+  /// **'Amount due'**
+  String get amountDue;
+
+  /// No description provided for @secure.
+  ///
+  /// In en, this message translates to:
+  /// **'Secure'**
+  String get secure;
+
+  /// No description provided for @cardNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Number'**
+  String get cardNumber;
+
+  /// No description provided for @cardNumberHint.
+  ///
+  /// In en, this message translates to:
+  /// **'0000 0000 0000 0000'**
+  String get cardNumberHint;
+
+  /// No description provided for @cardholderName.
+  ///
+  /// In en, this message translates to:
+  /// **'Cardholder Name'**
+  String get cardholderName;
+
+  /// No description provided for @cardholderHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Ahmed Khaled'**
+  String get cardholderHint;
+
+  /// No description provided for @expiry.
+  ///
+  /// In en, this message translates to:
+  /// **'Expiry'**
+  String get expiry;
+
+  /// No description provided for @cvv.
+  ///
+  /// In en, this message translates to:
+  /// **'CVV'**
+  String get cvv;
+
+  /// No description provided for @bookingInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Information'**
+  String get bookingInformation;
+
+  /// No description provided for @carRental.
+  ///
+  /// In en, this message translates to:
+  /// **'Car rental'**
+  String get carRental;
+
+  /// No description provided for @mockPaymentNote.
+  ///
+  /// In en, this message translates to:
+  /// **'Mock payment — no real transaction occurs.'**
+  String get mockPaymentNote;
+
+  /// No description provided for @confirmPayAmount.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm  •  EGP {amount}'**
+  String confirmPayAmount(String amount);
+
+  /// No description provided for @confirmPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Payment'**
+  String get confirmPayment;
+
+  /// No description provided for @processingPayment.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing Payment…'**
+  String get processingPayment;
+
+  /// No description provided for @doNotClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Please do not close this screen.'**
+  String get doNotClose;
+
+  /// No description provided for @paymentStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Status'**
+  String get paymentStatus;
+
+  /// No description provided for @paymentSuccessful.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment successful'**
+  String get paymentSuccessful;
+
+  /// No description provided for @bookingConfirmedSub.
+  ///
+  /// In en, this message translates to:
+  /// **'Your car booking is now confirmed'**
+  String get bookingConfirmedSub;
+
+  /// No description provided for @viewBookingDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Booking Details'**
+  String get viewBookingDetails;
+
+  /// No description provided for @backToHome.
+  ///
+  /// In en, this message translates to:
+  /// **'Back to Home'**
+  String get backToHome;
+
+  /// No description provided for @paidStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'Paid ✓'**
+  String get paidStatus;
+
+  /// No description provided for @bookingConfirmedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Confirmed'**
+  String get bookingConfirmedTitle;
+
+  /// No description provided for @bookingRequestSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Booking Request Sent!'**
+  String get bookingRequestSent;
+
+  /// No description provided for @ownerWillConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'The owner will confirm shortly.'**
+  String get ownerWillConfirm;
+
+  /// No description provided for @chatWithOwner.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat with Owner'**
+  String get chatWithOwner;
+
+  /// No description provided for @viewFullDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Full Details'**
+  String get viewFullDetails;
+
+  /// No description provided for @pending.
+  ///
+  /// In en, this message translates to:
+  /// **'Pending'**
+  String get pending;
+
+  /// No description provided for @enter16Digits.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter 16 digits'**
+  String get enter16Digits;
+
+  /// No description provided for @enterName.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter name'**
+  String get enterName;
+
+  /// No description provided for @required.
+  ///
+  /// In en, this message translates to:
+  /// **'Required'**
+  String get required;
 }
 
 class _AppLocalizationsDelegate

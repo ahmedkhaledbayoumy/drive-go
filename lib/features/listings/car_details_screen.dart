@@ -91,7 +91,7 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
                 IconButton(
                   icon: const Icon(Icons.edit),
                   tooltip: 'Edit listing',
-                  onPressed: () => context.push('/my-listings/edit/${car.id}'),
+                  onPressed: () => context.push('/edit-listing/${car.id}'),
                 ),
             ],
           ),
@@ -191,10 +191,8 @@ class _CarDetailsScreenState extends State<CarDetailsScreen> {
           if (phone != null) _launchPhone(phone);
         },
         onRequest: () {
-          // V4 will handle booking flow
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Booking coming in V4!')),
-          );
+          // V4 — push to booking form, passing the Car object as extra
+          context.push('/booking/new', extra: car);
         },
       ),
     );

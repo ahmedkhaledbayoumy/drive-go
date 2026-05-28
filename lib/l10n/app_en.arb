@@ -1,10 +1,8 @@
 {
   "@@locale": "en",
-
   "appName": "Drive Go",
   "tagline": "Car rental marketplace for Egypt",
   "driveGo": "DriveGo",
-
   "signIn": "Sign In",
   "signUp": "Sign Up",
   "continueAsGuest": "Continue as Guest",
@@ -12,7 +10,6 @@
   "joinDriveGo": "Join Drive Go",
   "noAccountQuestion": "Don't have an account? ",
   "haveAccountQuestion": "Already have an account? ",
-
   "email": "Email",
   "password": "Password",
   "fullName": "Full Name",
@@ -20,14 +17,12 @@
   "phoneOptional": "Phone (optional)",
   "businessName": "Business Name",
   "city": "City",
-
   "forgotPassword": "Forgot Password?",
   "forgotPasswordSubtitle": "Enter your email and we'll send you a link to reset your password.",
   "sendResetLink": "Send Reset Link",
   "checkInbox": "Check your inbox",
   "resetLinkSent": "We sent you a link to reset your password.",
   "backToSignIn": "Back to Sign In",
-
   "iAmA": "I am a:",
   "customer": "Customer",
   "customerSubtitle": "Rent cars for personal use",
@@ -35,7 +30,6 @@
   "individualOwnerSubtitle": "Rent out my personal car",
   "dealership": "Dealership",
   "dealershipSubtitle": "Rent out multiple cars (business)",
-
   "emailRequired": "Email is required",
   "invalidEmail": "Invalid email",
   "passwordRequired": "Password is required",
@@ -44,14 +38,12 @@
   "nameTooShort": "Name too short",
   "businessNameRequired": "Business name is required",
   "cityRequired": "City is required",
-
   "profile": "Profile",
   "editProfile": "Edit profile",
   "saveChanges": "Save Changes",
   "cancel": "Cancel",
   "profileUpdated": "Profile updated",
   "profileUpdateFailed": "Failed to update profile",
-
   "settings": "Settings",
   "theme": "Theme",
   "language": "Language",
@@ -64,14 +56,11 @@
   "logout": "Logout",
   "signOut": "Sign Out",
   "signOutConfirm": "Are you sure you want to sign out?",
-
   "somethingWrong": "Something went wrong. Try again.",
-
   "search": "Search",
   "home": "Home",
   "favorites": "Favorites",
   "myListings": "My Listings",
-
   "findYourRide": "Find Your Perfect Ride",
   "homeTagline": "Egypt's #1 Car Rental Marketplace · 200+ Cars",
   "searchHint": "Brand, model, city…",
@@ -90,7 +79,6 @@
   "noSavedCars": "No saved cars yet",
   "browseCars": "Browse Cars",
   "signInToSave": "Sign in to save your favourites",
-
   "filters": "Filters",
   "applyFilters": "Apply Filters",
   "clearAll": "Clear All",
@@ -118,7 +106,6 @@
   "cities": "Cities",
   "priceChip": "Price",
   "addListing": "Add",
-
   "colorWhite": "White",
   "colorBlack": "Black",
   "colorSilver": "Silver",
@@ -126,29 +113,39 @@
   "colorRed": "Red",
   "colorGrey": "Grey",
   "colorGold": "Gold",
-
   "priceRangeLabel": "EGP {min}–{max}",
   "@priceRangeLabel": {
     "placeholders": {
-      "min": {"type": "int"},
-      "max": {"type": "int"}
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "priceRangeSheetLabel": "EGP {min} — EGP {max}",
   "@priceRangeSheetLabel": {
     "placeholders": {
-      "min": {"type": "int"},
-      "max": {"type": "int"}
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "carLocationLine": "4.8 · {city}{egypt}",
   "@carLocationLine": {
     "placeholders": {
-      "city": {"type": "String"},
-      "egypt": {"type": "String"}
+      "city": {
+        "type": "String"
+      },
+      "egypt": {
+        "type": "String"
+      }
     }
   },
-
   "history": "My Rentals",
   "historyActive": "Active",
   "historyPast": "Past",
@@ -159,12 +156,10 @@
   "historyError": "Failed to load history",
   "historyErrorSub": "Something went wrong.",
   "tryAgain": "Try Again",
-
   "notificationsTitle": "Notifications",
   "notificationsMarkAllRead": "Mark all read",
   "notificationsEmpty": "All caught up!",
   "notificationsEmptySub": "You have no notifications yet.",
-
   "reviewTitle": "Leave a Review",
   "reviewNotFound": "Booking not found.",
   "reviewRating": "Your Rating",
@@ -176,14 +171,118 @@
   "ratingAverage": "Average",
   "ratingGood": "Good",
   "ratingExcellent": "Excellent!",
-
   "statusPending": "Pending",
   "statusConfirmed": "Confirmed",
   "statusActive": "Active",
   "statusCompleted": "Completed",
   "statusCancelled": "Cancelled",
   "statusDeclined": "Declined",
-
   "btnLeaveReview": "Leave Review",
-  "btnRentAgain": "Rent Again"
+  "btnRentAgain": "Rent Again",
+  "bookingDetails": "Booking Details",
+  "bookWithDriver": "Book with driver",
+  "driverCostPerDay": "+200 EGP/day",
+  "rentalPeriod": "Rental Period",
+  "pickupDate": "Pickup date",
+  "returnDate": "Return date",
+  "selectDate": "Select",
+  "daysRental": "{count} day rental",
+  "@daysRental": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "daysRentalPlural": "{count} days rental",
+  "@daysRentalPlural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "pickupLocation": "Pickup location",
+  "pickupHint": "e.g. Cairo Airport",
+  "rentalCost": "Rental Cost",
+  "totalAmount": "Total amount",
+  "driver": "Driver",
+  "days": "days",
+  "payAmount": "Pay EGP {amount}",
+  "@payAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "creatingBooking": "Creating booking…",
+  "failedCreateBooking": "Failed to create booking.",
+  "bookingNotFound": "Booking not found.",
+  "bookingId": "Booking ID",
+  "from": "From",
+  "to": "To",
+  "duration": "Duration",
+  "withDriver": "With driver",
+  "pickup": "Pickup",
+  "total": "Total",
+  "payment": "Payment",
+  "yes": "Yes",
+  "no": "No",
+  "confirm": "Confirm",
+  "decline": "Decline",
+  "markCompleted": "Mark as Completed",
+  "phoneConfirmation": "Phone Confirmation",
+  "didOwnerMarkCar": "Did the owner mark the car ready for you?",
+  "enjoyRide": "Great! Enjoy your ride 🚗",
+  "supportFollowUp": "Support will follow up with the owner.",
+  "chat": "Chat",
+  "contactVia": "Contact via:",
+  "inApp": "In-App",
+  "whatsapp": "WhatsApp",
+  "call": "Call",
+  "noMessages": "No messages yet.",
+  "startConversation": "Start the conversation below.",
+  "typeMessage": "Type a message…",
+  "ownerNoPhone": "Owner has not added a phone number yet.",
+  "whatsappNotInstalled": "WhatsApp is not installed on this device.",
+  "cannotCall": "Cannot make calls on this device.",
+  "paymentDetails": "Payment details",
+  "amountDue": "Amount due",
+  "secure": "Secure",
+  "cardNumber": "Card Number",
+  "cardNumberHint": "0000 0000 0000 0000",
+  "cardholderName": "Cardholder Name",
+  "cardholderHint": "Ahmed Khaled",
+  "expiry": "Expiry",
+  "cvv": "CVV",
+  "bookingInformation": "Booking Information",
+  "carRental": "Car rental",
+  "mockPaymentNote": "Mock payment — no real transaction occurs.",
+  "confirmPayAmount": "Confirm  •  EGP {amount}",
+  "@confirmPayAmount": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "confirmPayment": "Confirm Payment",
+  "processingPayment": "Processing Payment…",
+  "doNotClose": "Please do not close this screen.",
+  "paymentStatus": "Payment Status",
+  "paymentSuccessful": "Payment successful",
+  "bookingConfirmedSub": "Your car booking is now confirmed",
+  "viewBookingDetails": "View Booking Details",
+  "backToHome": "Back to Home",
+  "paidStatus": "Paid ✓",
+  "bookingConfirmedTitle": "Booking Confirmed",
+  "bookingRequestSent": "Booking Request Sent!",
+  "ownerWillConfirm": "The owner will confirm shortly.",
+  "chatWithOwner": "Chat with Owner",
+  "viewFullDetails": "View Full Details",
+  "pending": "Pending",
+  "enter16Digits": "Enter 16 digits",
+  "enterName": "Enter name",
+  "required": "Required"
 }

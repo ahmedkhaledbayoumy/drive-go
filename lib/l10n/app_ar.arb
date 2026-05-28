@@ -1,10 +1,8 @@
 {
   "@@locale": "ar",
-
   "appName": "درايف جو",
   "tagline": "سوق تأجير السيارات في مصر",
   "driveGo": "درايف جو",
-
   "signIn": "تسجيل الدخول",
   "signUp": "إنشاء حساب",
   "continueAsGuest": "متابعة كزائر",
@@ -12,7 +10,6 @@
   "joinDriveGo": "انضم إلى درايف جو",
   "noAccountQuestion": "ليس لديك حساب؟ ",
   "haveAccountQuestion": "لديك حساب بالفعل؟ ",
-
   "email": "البريد الإلكتروني",
   "password": "كلمة المرور",
   "fullName": "الاسم الكامل",
@@ -20,14 +17,12 @@
   "phoneOptional": "رقم الهاتف (اختياري)",
   "businessName": "اسم الشركة",
   "city": "المدينة",
-
   "forgotPassword": "نسيت كلمة المرور؟",
   "forgotPasswordSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رابطاً لإعادة تعيين كلمة المرور.",
   "sendResetLink": "إرسال رابط إعادة التعيين",
   "checkInbox": "تحقق من بريدك",
   "resetLinkSent": "أرسلنا لك رابطاً لإعادة تعيين كلمة المرور.",
   "backToSignIn": "العودة لتسجيل الدخول",
-
   "iAmA": "أنا:",
   "customer": "عميل",
   "customerSubtitle": "استئجار سيارات للاستخدام الشخصي",
@@ -35,7 +30,6 @@
   "individualOwnerSubtitle": "تأجير سيارتي الشخصية",
   "dealership": "معرض سيارات",
   "dealershipSubtitle": "تأجير عدة سيارات (شركة)",
-
   "emailRequired": "البريد الإلكتروني مطلوب",
   "invalidEmail": "بريد إلكتروني غير صالح",
   "passwordRequired": "كلمة المرور مطلوبة",
@@ -44,14 +38,12 @@
   "nameTooShort": "الاسم قصير جداً",
   "businessNameRequired": "اسم الشركة مطلوب",
   "cityRequired": "المدينة مطلوبة",
-
   "profile": "الملف الشخصي",
   "editProfile": "تعديل الملف الشخصي",
   "saveChanges": "حفظ التغييرات",
   "cancel": "إلغاء",
   "profileUpdated": "تم تحديث الملف الشخصي",
   "profileUpdateFailed": "فشل تحديث الملف الشخصي",
-
   "settings": "الإعدادات",
   "theme": "المظهر",
   "language": "اللغة",
@@ -64,14 +56,11 @@
   "logout": "تسجيل الخروج",
   "signOut": "تسجيل الخروج",
   "signOutConfirm": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-
   "somethingWrong": "حدث خطأ ما. حاول مرة أخرى.",
-
   "search": "بحث",
   "home": "الرئيسية",
   "favorites": "المفضلة",
   "myListings": "إعلاناتي",
-
   "findYourRide": "اعثر على رحلتك المثالية",
   "homeTagline": "سوق تأجير السيارات رقم ١ في مصر · أكثر من ٢٠٠ سيارة",
   "searchHint": "الماركة، الموديل، المدينة…",
@@ -90,7 +79,6 @@
   "noSavedCars": "لا توجد سيارات محفوظة بعد",
   "browseCars": "تصفح السيارات",
   "signInToSave": "سجّل الدخول لحفظ مفضلتك",
-
   "filters": "التصفية",
   "applyFilters": "تطبيق التصفية",
   "clearAll": "مسح الكل",
@@ -118,7 +106,6 @@
   "cities": "المدن",
   "priceChip": "السعر",
   "addListing": "إضافة",
-
   "colorWhite": "أبيض",
   "colorBlack": "أسود",
   "colorSilver": "فضي",
@@ -126,29 +113,39 @@
   "colorRed": "أحمر",
   "colorGrey": "رمادي",
   "colorGold": "ذهبي",
-
   "priceRangeLabel": "جنيه {min}–{max}",
   "@priceRangeLabel": {
     "placeholders": {
-      "min": {"type": "int"},
-      "max": {"type": "int"}
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "priceRangeSheetLabel": "جنيه {min} — جنيه {max}",
   "@priceRangeSheetLabel": {
     "placeholders": {
-      "min": {"type": "int"},
-      "max": {"type": "int"}
+      "min": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
     }
   },
   "carLocationLine": "٤٫٨ · {city}{egypt}",
   "@carLocationLine": {
     "placeholders": {
-      "city": {"type": "String"},
-      "egypt": {"type": "String"}
+      "city": {
+        "type": "String"
+      },
+      "egypt": {
+        "type": "String"
+      }
     }
   },
-
   "history": "إيجاراتي",
   "historyActive": "نشط",
   "historyPast": "السابق",
@@ -159,12 +156,10 @@
   "historyError": "فشل تحميل السجل",
   "historyErrorSub": "حدث خطأ ما.",
   "tryAgain": "حاول مرة أخرى",
-
   "notificationsTitle": "الإشعارات",
   "notificationsMarkAllRead": "تحديد الكل كمقروء",
   "notificationsEmpty": "لا يوجد جديد!",
   "notificationsEmptySub": "ليس لديك أي إشعارات حتى الآن.",
-
   "reviewTitle": "اترك تقييماً",
   "reviewNotFound": "لم يتم العثور على الحجز.",
   "reviewRating": "تقييمك",
@@ -176,14 +171,90 @@
   "ratingAverage": "متوسط",
   "ratingGood": "جيد",
   "ratingExcellent": "ممتاز!",
-
   "statusPending": "قيد الانتظار",
   "statusConfirmed": "مؤكد",
   "statusActive": "نشط",
   "statusCompleted": "مكتمل",
   "statusCancelled": "ملغى",
   "statusDeclined": "مرفوض",
-
   "btnLeaveReview": "اترك تقييماً",
-  "btnRentAgain": "استأجر مرة أخرى"
+  "btnRentAgain": "استأجر مرة أخرى",
+  "bookingDetails": "تفاصيل الحجز",
+  "bookWithDriver": "حجز مع سائق",
+  "driverCostPerDay": "+200 جنيه/يوم",
+  "rentalPeriod": "فترة الإيجار",
+  "pickupDate": "تاريخ الاستلام",
+  "returnDate": "تاريخ الإرجاع",
+  "selectDate": "اختر",
+  "daysRental": "إيجار ليوم {count}",
+  "daysRentalPlural": "إيجار {count} أيام",
+  "pickupLocation": "موقع الاستلام",
+  "pickupHint": "مثال: مطار القاهرة",
+  "rentalCost": "تكلفة الإيجار",
+  "totalAmount": "المبلغ الإجمالي",
+  "driver": "سائق",
+  "days": "أيام",
+  "payAmount": "ادفع {amount} جنيه",
+  "creatingBooking": "جاري إنشاء الحجز…",
+  "failedCreateBooking": "فشل إنشاء الحجز.",
+  "bookingNotFound": "الحجز غير موجود.",
+  "bookingId": "رقم الحجز",
+  "from": "من",
+  "to": "إلى",
+  "duration": "المدة",
+  "withDriver": "مع سائق",
+  "pickup": "الاستلام",
+  "total": "الإجمالي",
+  "payment": "الدفع",
+  "yes": "نعم",
+  "no": "لا",
+  "confirm": "تأكيد",
+  "decline": "رفض",
+  "markCompleted": "تحديد كمكتمل",
+  "phoneConfirmation": "تأكيد هاتفي",
+  "didOwnerMarkCar": "هل قام المالك بتجهيز السيارة لك؟",
+  "enjoyRide": "رائع! استمتع برحلتك 🚗",
+  "supportFollowUp": "سيتابع الدعم مع المالك.",
+  "chat": "المحادثة",
+  "contactVia": "تواصل عبر:",
+  "inApp": "التطبيق",
+  "whatsapp": "واتساب",
+  "call": "اتصال",
+  "noMessages": "لا توجد رسائل بعد.",
+  "startConversation": "ابدأ المحادثة أدناه.",
+  "typeMessage": "اكتب رسالة…",
+  "ownerNoPhone": "لم يضف المالك رقم هاتف بعد.",
+  "whatsappNotInstalled": "واتساب غير مثبت على هذا الجهاز.",
+  "cannotCall": "لا يمكن إجراء مكالمات على هذا الجهاز.",
+  "paymentDetails": "تفاصيل الدفع",
+  "amountDue": "المبلغ المستحق",
+  "secure": "آمن",
+  "cardNumber": "رقم البطاقة",
+  "cardNumberHint": "0000 0000 0000 0000",
+  "cardholderName": "اسم حامل البطاقة",
+  "cardholderHint": "أحمد خالد",
+  "expiry": "تاريخ الانتهاء",
+  "cvv": "CVV",
+  "bookingInformation": "معلومات الحجز",
+  "carRental": "إيجار السيارة",
+  "mockPaymentNote": "دفع تجريبي — لا تتم معاملة حقيقية.",
+  "confirmPayAmount": "تأكيد  •  {amount} جنيه",
+  "confirmPayment": "تأكيد الدفع",
+  "processingPayment": "جاري معالجة الدفع…",
+  "doNotClose": "يرجى عدم إغلاق هذه الشاشة.",
+  "paymentStatus": "حالة الدفع",
+  "paymentSuccessful": "تم الدفع بنجاح",
+  "bookingConfirmedSub": "تم تأكيد حجز سيارتك",
+  "viewBookingDetails": "عرض تفاصيل الحجز",
+  "backToHome": "العودة للرئيسية",
+  "paidStatus": "مدفوع ✓",
+  "bookingConfirmedTitle": "تم تأكيد الحجز",
+  "bookingRequestSent": "تم إرسال طلب الحجز!",
+  "ownerWillConfirm": "سيقوم المالك بالتأكيد قريباً.",
+  "chatWithOwner": "المحادثة مع المالك",
+  "viewFullDetails": "عرض التفاصيل الكاملة",
+  "pending": "قيد الانتظار",
+  "enter16Digits": "أدخل 16 رقماً",
+  "enterName": "أدخل الاسم",
+  "required": "مطلوب"
 }
