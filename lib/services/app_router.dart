@@ -1,9 +1,28 @@
 import 'package:go_router/go_router.dart';
-import '../features/shared/placeholder_screen.dart';
-import '../features/welcome/welcome_screen.dart';
+
+// V1 — Authentication
+import '../features/auth/login_screen.dart';
+import '../features/auth/signup_screen.dart';
+import '../features/auth/forgot_password_screen.dart';
+import '../features/auth/profile_screen.dart';
+import '../features/auth/settings_screen.dart';
+
+// V3 — Listings
+import '../features/listings/car_details_screen.dart';
+import '../features/listings/edit_listing_screen.dart';
+import '../features/listings/my_listings_screen.dart';
+import '../features/listings/owner_profile_screen.dart';
+import '../features/listings/rent_my_car_screen.dart';
+
+// V5 — History, Notifications, Reviews
 import '../features/history/screens/history_screen.dart';
 import '../features/history/screens/notifications_screen.dart';
 import '../features/history/screens/review_screen.dart';
+
+// Shared
+import '../features/shared/placeholder_screen.dart';
+import '../features/welcome/welcome_screen.dart';
+
 import 'auth_provider.dart';
 
 class AppRouter {
@@ -17,7 +36,6 @@ class AppRouter {
         final isAuthRoute =
             ['/login', '/signup', '/forgot-password'].contains(path);
 
-        // Guests can browse cars but not access these:
         const guestBlocked = [
           '/favorites',
           '/list-car',
@@ -46,30 +64,16 @@ class AppRouter {
         GoRoute(path: '/', redirect: (_, __) => '/welcome'),
         GoRoute(path: '/welcome', builder: (_, __) => const WelcomeScreen()),
 
-        // V1 — Authentication
-        GoRoute(
-            path: '/login',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Login', verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/signup',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Sign Up', verticalOwner: 'V1 — Authentication')),
+        // V1 — Authentication (real)
+        GoRoute(path: '/login', builder: (_, __) => const LoginScreen()),
+        GoRoute(path: '/signup', builder: (_, __) => const SignUpScreen()),
         GoRoute(
             path: '/forgot-password',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Forgot Password',
-                verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/profile',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Profile', verticalOwner: 'V1 — Authentication')),
-        GoRoute(
-            path: '/settings',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'Settings', verticalOwner: 'V1 — Authentication')),
+            builder: (_, __) => const ForgotPasswordScreen()),
+        GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen()),
+        GoRoute(path: '/settings', builder: (_, __) => const SettingsScreen()),
 
-        // V2 — Marketplace Discovery
+        // V2 — Marketplace Discovery (placeholder for now, integrating next)
         GoRoute(
             path: '/home',
             builder: (_, __) => const PlaceholderScreen(
@@ -86,27 +90,24 @@ class AppRouter {
                 screenName: 'Favorites',
                 verticalOwner: 'V2 — Marketplace Discovery')),
 
-        // V3 — Car Details, Listings, Owner Profile
+        // V3 — Listings (real)
         GoRoute(
             path: '/car/:id',
-            builder: (_, s) => PlaceholderScreen(
-                screenName: 'Car Details (id: ${s.pathParameters['id']})',
-                verticalOwner: 'V3 — Listings')),
+            builder: (_, s) =>
+                CarDetailsScreen(carId: s.pathParameters['id']!)),
+        GoRoute(path: '/list-car', builder: (_, __) => const RentMyCarScreen()),
         GoRoute(
-            path: '/list-car',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'List a Car', verticalOwner: 'V3 — Listings')),
+            path: '/my-listings', builder: (_, __) => const MyListingsScreen()),
         GoRoute(
-            path: '/my-listings',
-            builder: (_, __) => const PlaceholderScreen(
-                screenName: 'My Listings', verticalOwner: 'V3 — Listings')),
+            path: '/edit-listing/:id',
+            builder: (_, s) =>
+                EditListingScreen(carId: s.pathParameters['id']!)),
         GoRoute(
             path: '/owner/:id',
-            builder: (_, s) => PlaceholderScreen(
-                screenName: 'Owner Profile (id: ${s.pathParameters['id']})',
-                verticalOwner: 'V3 — Listings')),
+            builder: (_, s) =>
+                OwnerProfileScreen(ownerId: s.pathParameters['id']!)),
 
-        // V4 — Booking, Chat, Mock Payment
+        // V4 — Booking, Chat, Mock Payment (placeholders for now)
         GoRoute(
             path: '/booking/:id',
             builder: (_, __) => const PlaceholderScreen(
@@ -120,16 +121,15 @@ class AppRouter {
             builder: (_, __) => const PlaceholderScreen(
                 screenName: 'Mock Payment', verticalOwner: 'V4 — Booking')),
 
-        // V5 — History, Reviews, Notifications
-        GoRoute(
-            path: '/history',
-            builder: (_, __) => const HistoryScreen()),
+        // V5 — History, Notifications, Reviews (real)
+        GoRoute(path: '/history', builder: (_, __) => const HistoryScreen()),
         GoRoute(
             path: '/notifications',
             builder: (_, __) => const NotificationsScreen()),
         GoRoute(
             path: '/review/:bookingId',
-            builder: (_, state) => ReviewScreen(bookingId: state.pathParameters['bookingId']!)),
+            builder: (_, s) =>
+                ReviewScreen(bookingId: s.pathParameters['bookingId']!)),
       ],
     );
   }
