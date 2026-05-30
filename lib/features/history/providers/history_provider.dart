@@ -177,7 +177,7 @@ class HistoryProvider extends ChangeNotifier {
             reviews (id),
             car:cars (
               brand, model, year, price_per_day, photos,
-              owner:profiles (
+              owner:profiles!cars_owner_id_fkey (
                 full_name, avatar_url, account_type, business_name
               )
             )
