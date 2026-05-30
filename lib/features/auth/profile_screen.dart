@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../l10n/app_localizations.dart';
 import '../../models/enums.dart';
 import '../../services/auth_provider.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -89,6 +90,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
         return t.individualOwner;
       case AccountType.dealership:
         return t.dealership;
+      case AccountType.admin:
+        return 'Admin';
     }
   }
 
@@ -99,11 +102,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final profile = auth.currentProfile;
     final theme = Theme.of(context);
 
-    if (profile == null) {
-      return const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      );
-    }
+   if (profile == null) {
+  return Scaffold(
+    appBar: AppBar(title: Text(t.profile)),
+    body: Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const CircularProgressIndicator(),
+          const SizedBox(height: 24),
+          Text('Loading profile...'),
+          const SizedBox(height: 16),
+          OutlinedButton(
+            onPressed: () {
+              context.read<AuthProvider>().retryLoadProfile();
+            },
+            child: const Text('Retry'),
+          ),
+        ],
+      ),
+    ),
+  );
+}
 
     final isDealership = profile.accountType == AccountType.dealership;
 
@@ -117,6 +137,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               tooltip: t.editProfile,
               onPressed: _enterEditMode,
             ),
+            IconButton(
+              icon: const Icon(Icons.settings_outlined),
+              tooltip: t.settings,
+              onPressed: () => context.push('/settings'),
+          ),
         ],
       ),
       body: SafeArea(

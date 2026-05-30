@@ -1,12 +1,11 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../models/enums.dart';
 import '../models/models.dart';
 
-/// Three states the app can be in.
 enum AppAuthState { unauthenticated, guest, authenticated }
 
-/// Listens to Supabase auth and exposes the current Profile.
 class AuthProvider extends ChangeNotifier {
   final SupabaseClient _supabase = Supabase.instance.client;
 
@@ -16,12 +15,20 @@ class AuthProvider extends ChangeNotifier {
   Profile? _currentProfile;
   Profile? get currentProfile => _currentProfile;
 
+  // True once the profile has been fetched after sign-in.
+  // The router waits on this before deciding where to redirect.
+  bool _profileLoaded = false;
+  bool get profileLoaded => _profileLoaded;
+
   Session? get session => _supabase.auth.currentSession;
   User? get authUser => _supabase.auth.currentUser;
 
   bool get isAuthenticated => _state == AppAuthState.authenticated;
   bool get isGuest => _state == AppAuthState.guest;
   bool get isUnauthenticated => _state == AppAuthState.unauthenticated;
+  bool get isAdmin =>
+      _state == AppAuthState.authenticated &&
+      _currentProfile?.accountType == AccountType.admin;
 
   AuthProvider() {
     if (_supabase.auth.currentSession != null) {
@@ -34,11 +41,14 @@ class AuthProvider extends ChangeNotifier {
   void _handleAuthChange(AuthState event) {
     if (event.session != null) {
       _state = AppAuthState.authenticated;
-      notifyListeners();
+      _profileLoaded = false;
+      // Do NOT notifyListeners() here — wait until profile is loaded so the
+      // router always sees currentProfile when it evaluates the redirect.
       _loadProfile();
     } else if (_state == AppAuthState.authenticated) {
       _state = AppAuthState.unauthenticated;
       _currentProfile = null;
+      _profileLoaded = false;
       notifyListeners();
     }
   }
@@ -47,13 +57,27 @@ class AuthProvider extends ChangeNotifier {
     final userId = _supabase.auth.currentUser?.id;
     if (userId == null) return;
     try {
-      final response =
-          await _supabase.from('profiles').select().eq('id', userId).single();
+      final response = await _supabase
+          .from('profiles')
+          .select()
+          .eq('id', userId)
+          .single()
+          .timeout(const Duration(seconds: 10));
       _currentProfile = Profile.fromJson(response);
+      _profileLoaded = true;
+      // Single notifyListeners() after profile is ready — the router now has
+      // the full profile (including accountType) when it runs its redirect.
       notifyListeners();
-    } catch (_) {
-      // Profile doesn't exist yet — created during signup.
+    } catch (e) {
+      debugPrint('_loadProfile error: $e');
+      // Still notify so the UI isn't stuck on a loading state.
+      _profileLoaded = true;
+      notifyListeners();
     }
+  }
+
+  Future<void> retryLoadProfile() async {
+    await _loadProfile();
   }
 
   void enterAsGuest() {
@@ -70,7 +94,6 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Sign in with email + password. Throws AuthException on failure.
   Future<void> signInWithEmail({
     required String email,
     required String password,
@@ -81,7 +104,6 @@ class AuthProvider extends ChangeNotifier {
     );
   }
 
-  /// Sign up + create profile row in one flow.
   Future<void> signUpWithEmail({
     required String email,
     required String password,
@@ -98,7 +120,6 @@ class AuthProvider extends ChangeNotifier {
     if (res.user == null) {
       throw const AuthException('Sign up failed');
     }
-
     await _supabase.from('profiles').insert({
       'id': res.user!.id,
       'email': email,
@@ -111,12 +132,10 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  /// Send password reset email.
   Future<void> sendPasswordReset(String email) async {
     await _supabase.auth.resetPasswordForEmail(email);
   }
 
-  /// Update the current user's profile fields and reload from DB.
   Future<void> updateProfile({
     String? fullName,
     String? phone,

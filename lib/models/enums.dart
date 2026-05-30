@@ -1,7 +1,7 @@
 // All enum types used across Drive Go models.
 // Stored in Postgres as text (the enum's `.name` value).
 
-enum AccountType { customer, individualOwner, dealership }
+enum AccountType { customer, individualOwner, dealership, admin }
 
 enum CarStatus { available, pendingConfirmation, booked }
 

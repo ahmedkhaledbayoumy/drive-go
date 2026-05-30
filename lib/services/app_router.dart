@@ -1,3 +1,4 @@
+
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -33,6 +34,13 @@ import '../features/history/screens/history_screen.dart';
 import '../features/history/screens/notifications_screen.dart';
 import '../features/history/screens/review_screen.dart';
 
+// Admin
+import '../features/admin/screens/admin_dashboard_screen.dart';
+import '../features/admin/screens/admin_users_screen.dart';
+import '../features/admin/screens/admin_cars_screen.dart';
+import '../features/admin/screens/admin_bookings_screen.dart';
+import '../features/admin/providers/admin_provider.dart';
+
 // Shared
 import '../features/welcome/welcome_screen.dart';
 
@@ -49,6 +57,7 @@ class AppRouter {
         final isWelcome = path == '/welcome';
         final isAuthRoute =
             ['/login', '/signup', '/forgot-password'].contains(path);
+        final isAdminRoute = path.startsWith('/admin');
 
         const guestBlocked = [
           '/favorites',
@@ -61,7 +70,8 @@ class AppRouter {
           '/payment',
           '/review',
         ];
-        final isBlockedForGuest = guestBlocked.any((r) => path.startsWith(r));
+        final isBlockedForGuest =
+            guestBlocked.any((r) => path.startsWith(r));
 
         if (auth.isUnauthenticated && !isWelcome && !isAuthRoute) {
           return '/welcome';
@@ -69,9 +79,30 @@ class AppRouter {
         if (auth.isGuest && isBlockedForGuest) {
           return '/login';
         }
+
+        // If authenticated but profile hasn't loaded yet, stay put and wait.
+        // The router will re-run once _loadProfile() calls notifyListeners().
+        if (auth.isAuthenticated && !auth.profileLoaded) {
+          return null;
+        }
+
+        // Admin-only route guard — non-admin trying to reach /admin
+        if (isAdminRoute && auth.isAuthenticated && !auth.isAdmin) {
+          return '/home';
+        }
+
+        // Redirect admin users away from welcome/auth screens to admin dashboard
+        if (auth.isAuthenticated &&
+            (isWelcome || isAuthRoute) &&
+            auth.isAdmin) {
+          return '/admin';
+        }
+
+        // Redirect regular authenticated users away from welcome/auth screens
         if (auth.isAuthenticated && (isWelcome || isAuthRoute)) {
           return '/home';
         }
+
         return null;
       },
       routes: [
@@ -178,6 +209,36 @@ class AppRouter {
             path: '/review/:bookingId',
             builder: (_, s) =>
                 ReviewScreen(bookingId: s.pathParameters['bookingId']!)),
+
+        // Admin — protected, admin account type only.
+        // ShellRoute keeps a single AdminProvider instance alive across all
+        // admin sub-screens so context.watch<AdminProvider>() always resolves.
+        ShellRoute(
+          builder: (context, state, child) => ChangeNotifierProvider(
+            create: (_) => AdminProvider(),
+            child: child,
+          ),
+          routes: [
+            GoRoute(
+              path: '/admin',
+              builder: (context, _) => const AdminDashboardScreen(),
+              routes: [
+                GoRoute(
+                  path: 'users',
+                  builder: (context, _) => const AdminUsersScreen(),
+                ),
+                GoRoute(
+                  path: 'cars',
+                  builder: (context, _) => const AdminCarsScreen(),
+                ),
+                GoRoute(
+                  path: 'bookings',
+                  builder: (context, _) => const AdminBookingsScreen(),
+                ),
+              ],
+            ),
+          ],
+        ),
       ],
     );
   }

@@ -65,6 +65,7 @@ class Profile {
   bool get isIndividualOwner => accountType == AccountType.individualOwner;
   bool get isDealership => accountType == AccountType.dealership;
   bool get isOwner => isIndividualOwner || isDealership;
+  bool get isAdmin => accountType == AccountType.admin;
 }
 
 // ═══════════════════════════════════════════════════════════════

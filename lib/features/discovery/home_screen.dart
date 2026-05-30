@@ -76,6 +76,12 @@ class HomeScreen extends StatelessWidget {
                             onTap: () => context.go('/favorites'),
                             onHero: onHero,
                           ),
+                          IconButton(
+                           icon: const Icon(Icons.account_circle_outlined),
+                           color: onHero,
+                           tooltip: 'Profile',
+                          onPressed: () => context.push('/profile'),
+                         ),
                         ],
                       ),
                     ),
